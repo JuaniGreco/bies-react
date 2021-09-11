@@ -16,10 +16,9 @@ function conectarDB(){
     $conexion = mysqli_connect($servidor, $usuario, $password,$bd);
 
         if($conexion){
-            echo "CONECTADO";
+            echo "CONECTADO  ";
         }else{
-            echo 'Ha sucedido un error inexperado en la conexion de la base de datos
-';
+            echo 'Ha sucedido un error inesperado en la conexion de la base de datos';
         }
 
     return $conexion;

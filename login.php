@@ -11,23 +11,23 @@ $method = $_SERVER['REQUEST_METHOD'];
     session_start();    
     $mysqli->set_charset('utf8');
 	    
-	$usuario = $dataObject-> usuario;
-	$pas =	$dataObject-> clave;
+	$dni = $dataObject-> dni;
+	$pas =	$dataObject-> password;
     
   if ($nueva_consulta = $mysqli->prepare("SELECT 
   u.idUsuario, u.nombre, u.dni, u.password, u.email, u.idRol, r.nombreRol
   FROM usuarios u
   INNER JOIN roles r ON u.idRol = r.idRol
-  WHERE usuario = ?")) {
-        $nueva_consulta->bind_param('s', $usuario);
+  WHERE dni = ?")) {
+        $nueva_consulta->bind_param('s', $dni);
         $nueva_consulta->execute();
         $resultado = $nueva_consulta->get_result();
         if ($resultado->num_rows == 1) {
             $datos = $resultado->fetch_assoc();
-             $encriptado_db = $datos['clave'];
+             $encriptado_db = $datos['password'];
             if (password_verify($pas, $encriptado_db))
             {
-                $_SESSION['usuario'] = $datos['usuario'];
+                $_SESSION['dni'] = $datos['dni'];
                 echo json_encode(array('conectado'=>true,'idUsuario'=>$datos['idUsuario'], 'nombre'=>$datos['nombre'], 'dni'=>$datos['dni'], 'password'=>$datos['password'], 'email'=>$datos['email'],'nombreRol'=>$datos['nombreRol']  ) );
               }
 
