@@ -5,7 +5,7 @@ const URL_LOGIN ="http://localhost/bies-react/login.php";
 
 
 const enviarData = async (url, data) => {
-
+    
     const resp = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
@@ -23,12 +23,12 @@ const enviarData = async (url, data) => {
 export default function Login(props) {
 
     const refDni = useRef(null);
-    const refPassword = useRef(null);
+    const refClave = useRef(null);
 
     const handleLogin = () => {
         const data = {
             "dni": refDni.current.value,
-            "password": refPassword.current.value
+            "clave": refClave.current.value
         };
         console.log(data);
         enviarData(URL_LOGIN, data);
@@ -67,7 +67,7 @@ export default function Login(props) {
                                     placeholder="Ingrese su contraseña"
                                     aria-label="password"
                                     aria-describedby="basic-addon2"
-                                    ref={refPassword}
+                                    ref={refClave}
                                 />
                             </div>
 
