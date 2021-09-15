@@ -2,15 +2,16 @@
 	include "conectar.php";
     $conn = conectarDB();
 
+	$password= "prueba";
+
 	$nombre= "Prueba 2";
-	$dni= "99999999";
-	$password="prueba";
+	$dni= "10";
 	$email= "probando";
-	$password = password_hash($password, PASSWORD_DEFAULT);
+	$clave = password_hash($password, PASSWORD_DEFAULT);
 	//LA LINEA DE ARRIBA ENCRIPTA LA PASSWORD
 
 
-	echo $password;
+	echo $clave;
 	echo "<br/>";
 	
 
@@ -18,11 +19,11 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO usuarios (nombre, dni, password, email)
-VALUES ('$nombre', '$dni', '$password', '$email')";
+$sql = "INSERT INTO usuarios (nombre, dni, clave, email)
+VALUES ('$nombre', '$dni', '$clave', '$email')";
 
 if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
+  echo "Cree un registro";
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }

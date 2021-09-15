@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 11-09-2021 a las 20:48:24
+-- Tiempo de generación: 15-09-2021 a las 23:18:58
 -- Versión del servidor: 8.0.21
 -- Versión de PHP: 7.3.21
 
@@ -106,20 +106,21 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `idUsuario` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `dni` int NOT NULL,
-  `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `clave` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `idRol` int NOT NULL DEFAULT '2',
   PRIMARY KEY (`idUsuario`),
   KEY `fk_idRol` (`idRol`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`idUsuario`, `nombre`, `dni`, `password`, `email`, `idRol`) VALUES
+INSERT INTO `usuarios` (`idUsuario`, `nombre`, `dni`, `clave`, `email`, `idRol`) VALUES
 (1, 'Guido ', 37774564, 'guido', 'guido_magi@hotmail.com', 1),
-(2, 'juani', 37153076, '1234', 'email@email.com', 2);
+(2, 'juani', 1, '2', 'email@email.com', 2),
+(21, 'Prueba 2', 10, '$2y$10$nWfFc/qpnmaPuv0xqN8m9.GEsGGPCIMdrlrmXWdC/pUd1VaHI3R2C', 'probando', 2);
 
 --
 -- Restricciones para tablas volcadas
