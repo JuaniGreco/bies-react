@@ -40,11 +40,11 @@ header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 
                else {
 
-                 echo json_encode(array('conectado'=>false, 'error' => 'La clave es incorrecta, vuelva a intentarlo.'));
+                 echo json_encode(array('conectado'=>false, 'error' => 'Los datos ingresados son incorrectos.'));
                     }
         }
         else {
-              echo json_encode(array('conectado'=>false, 'error' => 'El usuario no existe.'));
+              echo json_encode(array('conectado'=>false, 'error' => 'Los datos ingresados son incorrectos.'));
         }
         $nueva_consulta->close();
       }
