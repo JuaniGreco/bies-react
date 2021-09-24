@@ -15,23 +15,28 @@ const enviarData = async (url, data) => {
         }
     });
 
-    console.log(resp);
+    //console.log(resp);
     const json = await resp.json();
-    console.log(json);
+    //console.log(json);
+
+    return json;
 }
 
 export default function Login(props) {
 
     const refDni = useRef(null);
     const refClave = useRef(null);
-
-    const handleLogin = () => {
+ 
+    const handleLogin = async () => {
         const data = {
             "dni": refDni.current.value,
             "clave": refClave.current.value
         };
         console.log(data);
-        enviarData(URL_LOGIN, data);
+        const respuestaJson = await enviarData(URL_LOGIN, data);
+        console.log ("respuesta", respuestaJson );
+ 
+        props.acceder(respuestaJson.idRol) //obtengo el idRol del usuario
     }
 
     return (
@@ -59,7 +64,7 @@ export default function Login(props) {
 
                             <div className="input-group mb-3">
                                 <span className="input-group-text" id="basic-addon2">
-                                    @
+                                    *
                                 </span>
                                 <input
                                     type="password"
