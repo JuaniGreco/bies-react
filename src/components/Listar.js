@@ -8,27 +8,27 @@ class Listar extends React.Component {
         super(props);
         this.state = {
             datosCargados: false,
-            empleados: []
-        }
+            playadeestacionamiento: []
+        };
     }
 
-    borrarRegistros = (id) => {
-        console.log(id);
-        fetch(Api+"?borrar="+id)
+    borrarRegistros = (idPlayaDeEstacionamiento) => {
+        console.log(idPlayaDeEstacionamiento);
+        fetch(Api+"?borrar="+idPlayaDeEstacionamiento)
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
                 console.log(datosRespuesta);
                 this.cargarDatos();
             })
             .catch(console.log)
-    }
+    };
 
     cargarDatos() {
         fetch(Api)
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
                 console.log(datosRespuesta);
-                this.setState({ datosCargados: true, empleados: datosRespuesta })
+                this.setState({ datosCargados: true, playadeestacionamiento: datosRespuesta })
             })
             .catch(console.log)
     }
@@ -39,7 +39,7 @@ class Listar extends React.Component {
 
     render() {
 
-        const { datosCargados, empleados } = this.state
+        const { datosCargados, playadeestacionamiento } = this.state
 
         if (!datosCargados) { return (<div>Cargando...</div>); }
         else {
@@ -47,7 +47,7 @@ class Listar extends React.Component {
             return (
                 <div className="card">
                     <div className="card-header">
-                      <Link className="btn btn-success" to={"/crear"}>Agregar Nuevo Empleado</Link> 
+                      <Link className="btn btn-success" to={"/crear"}>Agregar Estacionamiento</Link> 
                     </div>
                     <div className="card-body">
                         <h4>Lista de Empleados</h4>
@@ -55,28 +55,33 @@ class Listar extends React.Component {
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>nombre</th>
-                                    <th>Correo</th>
-                                    <th>Acciones</th>
+                                    <th>Nombre</th>
+                                    <th>Ubicacion</th>
+                                    <th>Capacidad</th>
+                                    <th>Observaciones</th>
+                                    <th>Mapa</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 {
-                                    empleados.map(
-                                        (empleado) => (
-                                            <tr key={empleado.id}>
-                                                <td>{empleado.id}</td>
-                                                <td>{empleado.nombre}</td>
-                                                <td>{empleado.correo}</td>
+                                    playadeestacionamiento.map(
+                                        (estacionamiento) => (
+                                            <tr key={estacionamiento.idPlayaDeEstacionamiento}>
+                                                <td>{estacionamiento.idPlayaDeEstacionamiento}</td>
+                                                <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
+                                                <td>{estacionamiento.ubicacion}</td>
+                                                <td>{estacionamiento.capacidad}</td>
+                                                <td>{estacionamiento.observaciones}</td>
+                                                <td>{estacionamiento.mapa}</td>
                                                 <td>
                                                     <div className="btn-group" role="group" aria-label="">
                                                         <Link className="btn btn-warning" 
-                                                        to={"/Editar/"+empleado.id}                                                        
+                                                        to={"/Editar/"+estacionamiento.idPlayaDeEstacionamiento}                                                        
                                                         >Editar</Link>
 
                                                         <button type="button" className="btn btn-danger" 
-                                                          onClick={()=> this.borrarRegistros(empleado.id)}>Borrar</button>
+                                                          onClick={()=> this.borrarRegistros(estacionamiento.idPlayaDeEstacionamiento)}>Borrar</button>
                                                     </div>
                                                 </td>
                                             </tr>

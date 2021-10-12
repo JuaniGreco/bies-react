@@ -6,8 +6,11 @@ class Crear extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            nombre:"",
-            correo:"",
+            nombrePlayaDeEstacionamiento:"",
+            ubicacion:"",
+            capacidad:"",
+            observaciones:"",
+            mapa:"",
             errores:[]
         }
     }
@@ -27,19 +30,25 @@ class Crear extends React.Component {
         e.preventDefault();
         console.log("Formulario enviado");
 
-        const{nombre,correo}=this.state;
-        console.log(nombre);
-        console.log(correo);
+        const{nombrePlayaDeEstacionamiento,ubicacion,capacidad,observaciones,mapa}=this.state;
+        console.log(nombrePlayaDeEstacionamiento);
+        console.log(ubicacion);
+        console.log(capacidad);
+        console.log(observaciones);
+        console.log(mapa);
 
         var errores=[];
-        if(!nombre)errores.push("error_nombre");
-        if(!correo)errores.push("error_correo");
+        if(!nombrePlayaDeEstacionamiento)errores.push("error_nombrePlayaDeEstacionamiento");
+        if(!ubicacion)errores.push("error_ubicacion");
+        if(!capacidad)errores.push("error_capacidad");
+        if(!observaciones)errores.push("error_observaciones");
+        if(!mapa)errores.push("error_mapa");
         
         this.setState({errores:errores});
         if(errores.length>0){
             return false;
         }
-        var datosEnviar={nombre:nombre, correo:correo}
+        var datosEnviar={nombrePlayaDeEstacionamiento:nombrePlayaDeEstacionamiento, ubicacion:ubicacion, capacidad:capacidad, observaciones:observaciones, mapa:mapa}
 
         fetch(Api+"?insertar=1",{
             method:"POST",
@@ -58,24 +67,46 @@ class Crear extends React.Component {
 
     render() {
         
-        const{nombre, correo}= this.state;
+        const{nombrePlayaDeEstacionamiento, ubicacion, capacidad, observaciones, mapa}= this.state;
         
         return ( <div className="card">
             <div className="card-header">
-                Crear Empleados
+                Crear Estacionamiento
             </div>
             <div className="card-body">
                 <form onSubmit={this.enviarDatos} >
                     <div className="form-group">
                       <label htmlFor="">Nombre:</label>
-                      <input type="text" name="nombre" onChange={this.cambioValor} value={nombre} id="nombre" className={ ((this.verificarError("error_nombre")) ?"is-invalid":"")+" form-control"} placeholder="" aria-describedby="helpId"/>
-                      <small id="helpId" className="invalid-feedback">Nombre del Empleado</small>
+                      <input type="text" name="nombrePlayaDeEstacionamiento" onChange={this.cambioValor} value={nombrePlayaDeEstacionamiento} id="nombrePlayaDeEstacionamiento" className={ ((this.verificarError("error_nombrePlayaDeEstacionamiento")) ?"is-invalid":"")+" form-control"} placeholder="" aria-describedby="helpId"/>
+                      <small id="helpId" className="invalid-feedback">Nombre del Estacionamiento</small>
+                      <br></br>
                     </div>
 
                     <div className="form-group">
-                      <label htmlFor="">Correo:</label>
-                      <input type="text" name="correo" id="Correo" onChange={this.cambioValor} value={correo} className={ ((this.verificarError("error_correo")) ?"is-invalid":"")+" form-control"} placeholder="" aria-describedby="helpId"/>
-                      <small id="helpId" className="invalid-feedback">Ingrese Correo</small>
+                      <label htmlFor="">Ubicacion:</label>
+                      <input type="text" name="ubicacion" id="ubicacion" onChange={this.cambioValor} value={ubicacion} className={ ((this.verificarError("error_ubicacion")) ?"is-invalid":"")+" form-control"} placeholder="" aria-describedby="helpId"/>
+                      <small id="helpId" className="invalid-feedback">Ingrese Ubicacion</small>
+                      <br></br>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="">Capacidad:</label>
+                      <input type="text" name="capacidad" id="capacidad" onChange={this.cambioValor} value={capacidad} className={ ((this.verificarError("error_capacidad")) ?"is-invalid":"")+" form-control"} placeholder="" aria-describedby="helpId"/>
+                      <small id="helpId" className="invalid-feedback">Ingrese Capacidad</small>
+                      <br></br>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="">Observaciones:</label>
+                      <input type="text" name="observaciones" id="observaciones" onChange={this.cambioValor} value={observaciones} className={ ((this.verificarError("error_observaciones")) ?"is-invalid":"")+" form-control"} placeholder="" aria-describedby="helpId"/>
+                      <small id="helpId" className="invalid-feedback">Ingrese Observaciones</small>
+                      <br></br>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="">Mapa:</label>
+                      <input type="text" name="mapa" id="mapa" onChange={this.cambioValor} value={mapa} className={ ((this.verificarError("error_mapa")) ?"is-invalid":"")+" form-control"} placeholder="" aria-describedby="helpId"/>
+                      <small id="helpId" className="invalid-feedback">Ingrese Mapa</small>
                       <br></br>
                     </div>
 

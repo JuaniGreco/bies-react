@@ -1,5 +1,5 @@
-import Login from "./components/Login";
-import React, { useState } from 'react';
+//import Login from "./components/Login";
+//import React, { useState } from 'react';
 
 
 
@@ -17,7 +17,7 @@ function App() {
       <nav className="navbar navbar-expand navbar-light bg-light">
         <div className="nav navbar-nav">
 
-          <Link className="nav-item nav-link active" to={"/"}>Lista</Link>
+          <Link className="nav-item nav-link active" to={"/"}>ABM de Estacionamientos</Link>
 
         </div>
       </nav>
