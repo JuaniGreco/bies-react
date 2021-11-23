@@ -50,7 +50,7 @@ class Listar extends React.Component {
                       <Link className="btn btn-success" to={"/crear"}>Agregar Estacionamiento</Link> 
                     </div>
                     <div className="card-body">
-                        <h4>Lista de Empleados</h4>
+                        <h4>Lista de Estacionamientos</h4>
                         <table className="table">
                             <thead>
                                 <tr>
