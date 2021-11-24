@@ -23,6 +23,16 @@ class Estacionamiento extends React.Component {
             .catch(console.log)
     };
 
+    estacionar = () => {        
+        fetch()
+            .then(respuesta => respuesta.json())
+            .then((datosRespuesta) => {
+                console.log(datosRespuesta);
+                this.cargarDatos();
+            })
+            .catch(console.log)
+    };
+
     cargarDatos() {
         fetch(Api)
             .then(respuesta => respuesta.json())
@@ -52,12 +62,12 @@ class Estacionamiento extends React.Component {
                         <table className="table">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    {/* <th>ID</th> */}
                                     <th>Nombre</th>
                                     <th>Ubicacion</th>
                                     <th>Capacidad</th>
                                     <th>Observaciones</th>
-                                    <th>Mapa</th>
+                                    {/* <th>Mapa</th> */}
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,21 +76,21 @@ class Estacionamiento extends React.Component {
                                     playadeestacionamiento.map(
                                         (estacionamiento) => (
                                             <tr key={estacionamiento.idPlayaDeEstacionamiento}>
-                                                <td>{estacionamiento.idPlayaDeEstacionamiento}</td>
+                                                {/* <td>{estacionamiento.idPlayaDeEstacionamiento}</td> */}
                                                 <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
                                                 <td>{estacionamiento.ubicacion}</td>
                                                 <td>{estacionamiento.capacidad}</td>
                                                 <td>{estacionamiento.observaciones}</td>
-                                                <td>{estacionamiento.mapa}</td>
+                                                {/* <td>{estacionamiento.mapa}</td> */}
                                                 <td>
-                                                    {/* <div className="btn-group" role="group" aria-label="">
-                                                        <Link className="btn btn-warning" 
+                                                     <div className="btn-group" role="group" aria-label="">
+                                                        {/*<Link className="btn btn-warning" 
                                                         to={"/Editar/"+estacionamiento.idPlayaDeEstacionamiento}                                                        
-                                                        >Editar</Link>
+                                                        >Editar</Link>*/}
 
                                                         <button type="button" className="btn btn-danger" 
-                                                          onClick={()=> this.borrarRegistros(estacionamiento.idPlayaDeEstacionamiento)}>Borrar</button>
-                                                    </div> */}
+                                                          onClick={()=> this.estacionar()}>Estacionar</button>
+                                                    </div> 
                                                 </td>
                                             </tr>
                                         )
