@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import '../css/login.css';
 
-const URL_LOGIN ="http://localhost/bies-react/login.php";
+const URL_LOGIN = "http://localhost/bies-react/login.php";
 
 
 const enviarData = async (url, data) => {
-    
+
     const resp = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
@@ -26,7 +26,7 @@ export default function Login(props) {
 
     const refDni = useRef(null);
     const refClave = useRef(null);
- 
+
     const handleLogin = async () => {
         const data = {
             "dni": refDni.current.value,
@@ -34,8 +34,8 @@ export default function Login(props) {
         };
         console.log(data);
         const respuestaJson = await enviarData(URL_LOGIN, data);
-        console.log ("respuesta", respuestaJson );
- 
+        console.log("respuesta", respuestaJson);
+
         props.acceder(respuestaJson.idRol) //obtengo el idRol del usuario
     }
 
@@ -45,12 +45,12 @@ export default function Login(props) {
                 <div className="col-sm-4 offset-4  mt-5">
                     <div className="card pt-5">
                         <div className="card-header">
-                            Ingreso
+                            Inicia sesión en B-IES
                         </div>
                         <div className="card-body">
                             <div className="input-group mb-3">
                                 <span className="input-group-text" id="basic-addon1">
-                                    @
+                                    ✔️
                                 </span>
                                 <input
                                     type="text"
@@ -64,7 +64,7 @@ export default function Login(props) {
 
                             <div className="input-group mb-3">
                                 <span className="input-group-text" id="basic-addon2">
-                                    *
+                                    🔒
                                 </span>
                                 <input
                                     type="password"
@@ -76,9 +76,17 @@ export default function Login(props) {
                                 />
                             </div>
 
-                            <button
-                                onClick={handleLogin}
-                                className="btn btn-info btn-lg btn-block">Acceder</button>
+                            <div className='botones'>
+                                <button
+                                    onClick={handleLogin}
+                                    className="btn btn-outline-primary">Iniciar sesión</button>
+
+                                <a className="nav-link" href="#">Registrarse</a>
+                            </div>
+
+                            <p className="mt-5 mb-3 text-muted">© 2019–2022</p>
+
+
 
 
 
