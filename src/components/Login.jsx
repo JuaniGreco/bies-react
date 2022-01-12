@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import '../css/login.css';
 
+
 const URL_LOGIN = "http://localhost/bies-react/login.php";
 
 
@@ -81,7 +82,8 @@ export default function Login(props) {
                                     onClick={handleLogin}
                                     className="btn btn-outline-primary">Iniciar sesión</button>
 
-                                <a className="nav-link" href="#">Registrarse</a>
+                                <a className="nav-link" href="">Registrarse</a>
+                               
                             </div>
 
                             <p className="mt-5 mb-3 text-muted">© 2019–2022</p>
