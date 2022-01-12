@@ -14,7 +14,7 @@ class Estacionamiento extends React.Component {
 
     borrarRegistros = (idPlayaDeEstacionamiento) => {
         console.log(idPlayaDeEstacionamiento);
-        fetch(Api+"?borrar="+idPlayaDeEstacionamiento)
+        fetch(Api + "?borrar=" + idPlayaDeEstacionamiento)
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
                 console.log(datosRespuesta);
@@ -23,8 +23,9 @@ class Estacionamiento extends React.Component {
             .catch(console.log)
     };
 
-    estacionar = () => {        
-        fetch()
+    ver = (idPlayaDeEstacionamiento) => {
+        console.log(idPlayaDeEstacionamiento);
+        fetch(idPlayaDeEstacionamiento)
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
                 console.log(datosRespuesta);
@@ -56,7 +57,7 @@ class Estacionamiento extends React.Component {
 
             return (
                 <div className="card">
-                    
+
                     <div className="card-body">
                         <h4>Lista de Estacionamientos</h4>
                         <table className="table">
@@ -83,14 +84,13 @@ class Estacionamiento extends React.Component {
                                                 <td>{estacionamiento.observaciones}</td>
                                                 {/* <td>{estacionamiento.mapa}</td> */}
                                                 <td>
-                                                     <div className="btn-group" role="group" aria-label="">
+                                                    <div className="btn-group" role="group" aria-label="">
                                                         {/*<Link className="btn btn-warning" 
                                                         to={"/Editar/"+estacionamiento.idPlayaDeEstacionamiento}                                                        
                                                         >Editar</Link>*/}
-
-                                                        <button type="button" className="btn btn-danger" 
-                                                          onClick={()=> this.estacionar()}>Estacionar</button>
-                                                    </div> 
+                                                        <button type="button" className="btn btn-warning"
+                                                            onClick={() => this.ver()}>Ver</button>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         )
@@ -100,7 +100,7 @@ class Estacionamiento extends React.Component {
                         </table>
                     </div>
                     <div className="card-footer text-muted">
-                
+
                     </div>
                 </div>
 
@@ -110,33 +110,3 @@ class Estacionamiento extends React.Component {
 }
 
 export default Estacionamiento;
-
-/*import React from 'react';
-
-class Estacionamiento extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {  }
-    }
-    render() { 
-        return ( <table class="table">
-            <thead>
-                <tr>
-                    <th>N Estacionamiento</th>
-                    <th>nombre</th>
-                    <th>direccion</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td scope="row">1</td>
-                    <td>Alvear</td>
-                    <td>Alvear 2823</td>
-                </tr>
-                
-            </tbody>
-        </table> );
-    }
-}
- 
-export default Estacionamiento;*/
