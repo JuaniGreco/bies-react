@@ -47,7 +47,7 @@ class Listar extends React.Component {
             return (
                 <div className="card">
                     <div className="card-header">
-                      <Link className="btn btn-success" to={"/crear"}>Agregar Estacionamiento</Link> 
+                      <Link className="btn btn-success" to={"/crear"}>➕ Agregar</Link> 
                     </div>
                     <div className="card-body">
                         <h4>Lista de Estacionamientos</h4>
