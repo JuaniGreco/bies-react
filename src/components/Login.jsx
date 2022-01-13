@@ -1,5 +1,8 @@
 import React, { useRef } from 'react';
 import '../css/login.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import CrearUsuario from './CrearUsuario';
+
 
 
 
@@ -82,21 +85,22 @@ export default function Login(props) {
                                 <button
                                     onClick={handleLogin}
                                     className="btn btn-outline-primary">Iniciar sesión</button>
+                                {/* <a className="nav-link" href="">Registrarse</a> */}
 
-                                <a className="nav-link" href="">Registrarse</a>
-                               
+                                <Router>
+                                    <div>
+                                        <Switch>
+                                            <Route path="/CrearUsuario">
+                                                <CrearUsuario />
+                                            </Route>
+                                        </Switch>
+                                    </div>
+                                </Router>
                             </div>
-
-                            <p className="mt-5 mb-3 text-muted">© 2019–2022</p>
-
-
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    )
+            </div>
+            )
 }
