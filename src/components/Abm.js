@@ -5,7 +5,6 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Crear from "../components/Crear";
 import Editar from "../components/Editar";
-import CrearUsuario from "../components/CrearUsuario";
 import '../css/login.css';
 
 class Abm extends React.Component {

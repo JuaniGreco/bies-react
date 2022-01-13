@@ -96,12 +96,8 @@ export default function Login(props) {
                                             </Route>
                                         </Switch>
                                     </div>
-
-                                    <Link className="nav-item nav-link active " to={"/CrearUsuario"}>Registrarse</Link>
-                                </Router>
-
-
-                            
+                                    {<Link className="registrarse " to={"/CrearUsuario"}>¿No tiene cuenta? Registrese aquí</Link>}
+                                </Router>               
                         </div>
                     </div>
                 </div>

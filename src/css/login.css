@@ -31,3 +31,9 @@
     background: linear-gradient(to left, #ED8F03, #FFB75E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     font-family: fantasy;
 }
+
+.registrarse{
+    text-align: left;
+    display:grid;
+    font-size: smaller;
+}

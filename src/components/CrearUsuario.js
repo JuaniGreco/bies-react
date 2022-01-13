@@ -43,7 +43,8 @@ class CrearUsuario extends React.Component {
             return false;
         }
         var datosEnviar = { nombre: nombre, dni: dni, clave: clave, email: email };
-
+        console.log(datosEnviar);
+        
         fetch(apiCrearUsuario, {
             method: "POST",
             body: JSON.stringify(datosEnviar)
@@ -65,7 +66,7 @@ class CrearUsuario extends React.Component {
 
         return (<div className="card">
             <div className="card-header">
-                Crear Estacionamiento
+                Registrarse
             </div>
             <div className="card-body">
                 <form onSubmit={this.enviarDatos} >

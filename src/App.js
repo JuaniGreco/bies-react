@@ -13,7 +13,6 @@ function App() {
     setIdRol(estado)
   }
 
-  console.log("idrol", idRol);
   const project = () => {
     switch (idRol) {
       case 1: return <Abm />;
