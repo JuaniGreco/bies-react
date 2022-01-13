@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import '../css/login.css';
 
 
+
 const URL_LOGIN = "http://localhost/bies-react/login.php";
 
 
@@ -45,7 +46,7 @@ export default function Login(props) {
             <div className="row">
                 <div className="col-sm-4 offset-4  mt-5">
                     <div className="card pt-5">
-                        <div className="card-header">
+                        <div className="card-header titulosLogin">
                             Inicia sesión en B-IES
                         </div>
                         <div className="card-body">
