@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Link } from "react-router-dom";
 import Api from "../servicios/Api";
+import '../css/login.css';
 
 class Estacionamiento extends React.Component {
     constructor(props) {
@@ -12,17 +13,7 @@ class Estacionamiento extends React.Component {
         };
     }
 
-    borrarRegistros = (idPlayaDeEstacionamiento) => {
-        console.log(idPlayaDeEstacionamiento);
-        fetch(Api + "?borrar=" + idPlayaDeEstacionamiento)
-            .then(respuesta => respuesta.json())
-            .then((datosRespuesta) => {
-                console.log(datosRespuesta);
-                this.cargarDatos();
-            })
-            .catch(console.log)
-    };
-
+   
     ver = (idPlayaDeEstacionamiento) => {
         console.log(idPlayaDeEstacionamiento);
         fetch(idPlayaDeEstacionamiento)
@@ -56,10 +47,10 @@ class Estacionamiento extends React.Component {
         else {
 
             return (
-                <div className="card">
+                <div className="login">
 
                     <div className="card-body">
-                        <h4>Lista de Estacionamientos</h4>
+                        <h4 className='titulos'>Estacionamientos 🛑</h4>
                         <table className="table">
                             <thead>
                                 <tr>
