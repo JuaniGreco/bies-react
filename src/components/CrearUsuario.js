@@ -9,6 +9,7 @@ class CrearUsuario extends React.Component {
             nombre: "",
             dni: "",
             clave: "",
+            
             email: "",
             errores: []
         }
@@ -45,7 +46,7 @@ class CrearUsuario extends React.Component {
         var datosEnviar = { nombre: nombre, dni: dni, clave: clave, email: email };
         console.log(datosEnviar);
         
-        fetch(apiCrearUsuario, {
+        fetch(apiCrearUsuario + "?insertar=1", {
             method: "POST",
             body: JSON.stringify(datosEnviar)
 
@@ -71,7 +72,7 @@ class CrearUsuario extends React.Component {
             <div className="card-body">
                 <form onSubmit={this.enviarDatos} >
                     <div className="form-group">
-                        <label htmlFor="">Nombre:</label>
+                        <label htmlFor="">Nombre y Apellido:</label>
                         <input type="text" name="nombre" onChange={this.cambioValor} minLength={6} maxLength={50} value={nombre} id="nombre" className={((this.verificarError("error_nombre")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
                         <small id="helpId" className="invalid-feedback">Ingrese nombre y apellido</small>
                         <br></br>
@@ -86,7 +87,14 @@ class CrearUsuario extends React.Component {
 
                     <div className="form-group">
                         <label htmlFor="">Clave:</label>
-                        <input type="text" name="clave" id="clave" onChange={this.cambioValor} maxLength={20} value={clave} className={((this.verificarError("error_clave")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
+                        <input type="password" name="clave" id="clave" onChange={this.cambioValor} maxLength={20} value={clave} className={((this.verificarError("error_clave")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
+                        <small id="helpId" className="invalid-feedback">Ingrese clave</small>
+                        <br></br>
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="">Repite la clave:</label>
+                        <input type="password" name="clave2" id="clave2" onChange={this.cambioValor} maxLength={20} value={clave} className={((this.verificarError("error_clave")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
                         <small id="helpId" className="invalid-feedback">Ingrese clave</small>
                         <br></br>
                     </div>
@@ -99,7 +107,7 @@ class CrearUsuario extends React.Component {
                     </div>
 
                     <div className="btn-group" role="group" aria-label="">
-                        <button type="submit" className="btn btn-success">Agregar</button>
+                        <button type="submit" className="btn btn-success">Registrarme</button>
                         <Link to={"/"} className="btn btn-cancel">Cancelar</Link>
 
                     </div>
