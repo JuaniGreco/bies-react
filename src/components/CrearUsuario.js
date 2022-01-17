@@ -9,7 +9,7 @@ class CrearUsuario extends React.Component {
             nombre: "",
             dni: "",
             clave: "",
-            
+
             email: "",
             errores: []
         }
@@ -45,7 +45,7 @@ class CrearUsuario extends React.Component {
         }
         var datosEnviar = { nombre: nombre, dni: dni, clave: clave, email: email };
         console.log(datosEnviar);
-        
+
         fetch(apiCrearUsuario + "?insertar=1", {
             method: "POST",
             body: JSON.stringify(datosEnviar)
@@ -65,59 +65,63 @@ class CrearUsuario extends React.Component {
 
         const { nombre, dni, clave, email } = this.state;
 
-        return (<div className="card">
-            <div className="card-header">
-                Registrarse
-            </div>
-            <div className="card-body">
-                <form onSubmit={this.enviarDatos} >
-                    <div className="form-group">
-                        <label htmlFor="">Nombre y Apellido:</label>
-                        <input type="text" name="nombre" onChange={this.cambioValor} minLength={6} maxLength={50} value={nombre} id="nombre" className={((this.verificarError("error_nombre")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
-                        <small id="helpId" className="invalid-feedback">Ingrese nombre y apellido</small>
-                        <br></br>
-                    </div>
+        return (
+            <div className="card">
+                <div className="card-header">
+                
+                    Registrarse
+                </div>
+                <div className="card-body">
+                    <form onSubmit={this.enviarDatos} >
+                        <div className="form-group">
+                            <label htmlFor="">Nombre y Apellido:</label>
+                            <input type="text" name="nombre" onChange={this.cambioValor} minLength={6} maxLength={50} value={nombre} id="nombre" className={((this.verificarError("error_nombre")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
+                            <small id="helpId" className="invalid-feedback">Ingrese nombre y apellido</small>
+                            <br></br>
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="">Dni:</label>
-                        <input type="text" name="dni" id="dni" onChange={this.cambioValor} minLength={6} maxLength={9} value={dni} className={((this.verificarError("error_dni")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
-                        <small id="helpId" className="invalid-feedback">Ingrese dni</small>
-                        <br></br>
-                    </div>
+                        <div className="form-group">
+                            <label htmlFor="">Dni:</label>
+                            <input type="text" name="dni" id="dni" onChange={this.cambioValor} minLength={6} maxLength={9} value={dni} className={((this.verificarError("error_dni")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
+                            <small id="helpId" className="invalid-feedback">Ingrese dni</small>
+                            <br></br>
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="">Clave:</label>
-                        <input type="password" name="clave" id="clave" onChange={this.cambioValor} maxLength={20} value={clave} className={((this.verificarError("error_clave")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
-                        <small id="helpId" className="invalid-feedback">Ingrese clave</small>
-                        <br></br>
-                    </div>
+                        <div className="form-group">
+                            <label htmlFor="">Clave:</label>
+                            <input type="password" name="clave" id="clave" onChange={this.cambioValor} maxLength={20} value={clave} className={((this.verificarError("error_clave")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
+                            <small id="helpId" className="invalid-feedback">Ingrese clave</small>
+                            <br></br>
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="">Repite la clave:</label>
-                        <input type="password" name="clave2" id="clave2" onChange={this.cambioValor} maxLength={20} value={clave} className={((this.verificarError("error_clave")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
-                        <small id="helpId" className="invalid-feedback">Ingrese clave</small>
-                        <br></br>
-                    </div>
+                        <div className="form-group">
+                            <label htmlFor="">Repite la clave:</label>
+                            <input type="password" name="clave2" id="clave2" onChange={this.cambioValor} maxLength={20} value={clave} className={((this.verificarError("error_clave")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
+                            <small id="helpId" className="invalid-feedback">Ingrese clave</small>
+                            <br></br>
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="">Email:</label>
-                        <input type="text" name="email" id="email" onChange={this.cambioValor} maxLength={60} value={email} className={((this.verificarError("error_email")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
-                        <small id="helpId" className="invalid-feedback">Ingrese email</small>
-                        <br></br>
-                    </div>
+                        <div className="form-group">
+                            <label htmlFor="">Email:</label>
+                            <input type="text" name="email" id="email" onChange={this.cambioValor} maxLength={60} value={email} className={((this.verificarError("error_email")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
+                            <small id="helpId" className="invalid-feedback">Ingrese email</small>
+                            <br></br>
+                        </div>
 
-                    <div className="btn-group" role="group" aria-label="">
-                        <button type="submit" className="btn btn-success">Registrarme</button>
-                        <Link to={"/"} className="btn btn-cancel">Cancelar</Link>
+                        <div className="btn-group" role="group" aria-label="">
+                            <button type="submit" className="btn btn-success">Registrarme</button>
+                            <Link to={"/"} className="btn btn-cancel">Cancelar</Link>
 
-                    </div>
-                </form>
 
-            </div>
-            <div className="card-footer text-muted">
 
-            </div>
-        </div>);
+                        </div>
+                    </form>
+
+                </div>
+                <div className="card-footer text-muted">
+
+                </div>
+            </div>);
     }
 }
 

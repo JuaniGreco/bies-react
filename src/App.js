@@ -2,8 +2,8 @@ import Login from "./components/Login";
 import React, { useState } from 'react';
 
 
-import Estacionamiento from "./components/Estacionamiento";
-import Abm from "./components/Abm";
+import ListaEstacionamientos from "./components/ListaEstacionamientos";
+import AbmEstacionamiento from "./components/AbmEstacionamiento";
 
 
 
@@ -15,8 +15,8 @@ function App() {
 
   const project = () => {
     switch (idRol) {
-      case 1: return <Abm />;
-      case 2: return <Estacionamiento />;
+      case 1: return <AbmEstacionamiento />;
+      case 2: return <ListaEstacionamientos />;
 
       default: return <h1>Error...</h1>
     }

@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Listar from "../components/Listar";
+import AgregarEstacionamiento from "./AgregarEstacionamiento";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Crear from "../components/Crear";
-import Editar from "../components/Editar";
+import CrearEstacionamiento from "./CrearEstacionamiento";
+import EditarEstacionamiento from "./EditarEstacionamiento";
 import '../css/login.css';
 
-class Abm extends React.Component {
+class AbmEstacionamiento extends React.Component {
     constructor(props) {
         super(props);
         this.state = {}
@@ -22,9 +22,9 @@ class Abm extends React.Component {
                 </nav>
 
                 <div className="container">
-                    <Route exact path="/" component={Listar}></Route>
-                    <Route path="/Crear" component={Crear}></Route>
-                    <Route path="/Editar/:id" component={Editar}></Route>
+                    <Route exact path="/" component={AgregarEstacionamiento}></Route>
+                    <Route path="/CrearEstacionamiento" component={CrearEstacionamiento}></Route>
+                    <Route path="/EditarEstacionamiento/:id" component={EditarEstacionamiento}></Route>
                    
                 </div>
             </Router>
@@ -33,4 +33,4 @@ class Abm extends React.Component {
     }
 }
 
-export default Abm;
+export default AbmEstacionamiento;

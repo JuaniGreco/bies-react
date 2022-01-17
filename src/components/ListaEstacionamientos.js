@@ -1,9 +1,8 @@
 import React from 'react';
-
-import { Link } from "react-router-dom";
 import Api from "../servicios/Api";
+import '../css/login.css';
 
-class Listar extends React.Component {
+class ListaEstacionamientos extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,9 +11,10 @@ class Listar extends React.Component {
         };
     }
 
-    borrarRegistros = (idPlayaDeEstacionamiento) => {
+   
+    ver = (idPlayaDeEstacionamiento) => {
         console.log(idPlayaDeEstacionamiento);
-        fetch(Api+"?borrar="+idPlayaDeEstacionamiento)
+        fetch(idPlayaDeEstacionamiento)
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
                 console.log(datosRespuesta);
@@ -45,21 +45,19 @@ class Listar extends React.Component {
         else {
 
             return (
-                <div className="card">
-                    <div className="card-header">
-                      <Link className="btn btn-success" to={"/crear"}>➕ Agregar</Link> 
-                    </div>
+                <div className="login">
+
                     <div className="card-body">
-                        <h4>Lista de Estacionamientos</h4>
+                        <h4 className='titulos'>Estacionamientos 🛑</h4>
                         <table className="table">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    {/* <th>ID</th> */}
                                     <th>Nombre</th>
                                     <th>Ubicacion</th>
                                     <th>Capacidad</th>
                                     <th>Observaciones</th>
-                                    <th>Mapa</th>
+                                    {/* <th>Mapa</th> */}
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,20 +66,19 @@ class Listar extends React.Component {
                                     playadeestacionamiento.map(
                                         (estacionamiento) => (
                                             <tr key={estacionamiento.idPlayaDeEstacionamiento}>
-                                                <td>{estacionamiento.idPlayaDeEstacionamiento}</td>
+                                                {/* <td>{estacionamiento.idPlayaDeEstacionamiento}</td> */}
                                                 <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
                                                 <td>{estacionamiento.ubicacion}</td>
                                                 <td>{estacionamiento.capacidad}</td>
                                                 <td>{estacionamiento.observaciones}</td>
-                                                <td>{estacionamiento.mapa}</td>
+                                                {/* <td>{estacionamiento.mapa}</td> */}
                                                 <td>
                                                     <div className="btn-group" role="group" aria-label="">
-                                                        <Link className="btn btn-warning" 
+                                                        {/*<Link className="btn btn-warning" 
                                                         to={"/Editar/"+estacionamiento.idPlayaDeEstacionamiento}                                                        
-                                                        >Editar</Link>
-
-                                                        <button type="button" className="btn btn-danger" 
-                                                          onClick={()=> this.borrarRegistros(estacionamiento.idPlayaDeEstacionamiento)}>Borrar</button>
+                                                        >Editar</Link>*/}
+                                                        <button type="button" className="btn btn-warning"
+                                                            onClick={() => this.ver()}>Ver</button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -92,7 +89,7 @@ class Listar extends React.Component {
                         </table>
                     </div>
                     <div className="card-footer text-muted">
-                
+
                     </div>
                 </div>
 
@@ -101,4 +98,4 @@ class Listar extends React.Component {
     }
 }
 
-export default Listar;
+export default ListaEstacionamientos;
