@@ -86,8 +86,9 @@ export default function Login(props) {
                                 <button
                                     onClick={handleLogin}
                                     className="btn btn-outline-primary">Iniciar sesión</button>
-                                {/* <a className="nav-link" href="">Registrarse</a> */}
+                                
                             </div>
+                            <br></br>
                                 <Router>
                                     <div>
                                         <Switch>
