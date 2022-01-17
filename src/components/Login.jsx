@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 
 
+
 const URL_LOGIN = "http://localhost/bies-react/login.php";
 
 
@@ -86,23 +87,21 @@ export default function Login(props) {
                                 <button
                                     onClick={handleLogin}
                                     className="btn btn-outline-primary">Iniciar sesión</button>
-                                
+
                             </div>
-                            <br></br>
+                            <div className="container">
                                 <Router>
-                                    <div>
-                                        <Switch>
-                                            <Route path="/CrearUsuario"> 
-                                                <CrearUsuario/>
-                                            </Route>
-                                        </Switch>
+                                    <div className="container">                                        
+                                        <Route exact path="/CrearUsuario" component={CrearUsuario}></Route>
                                     </div>
-                                    {<Link className="registrarse " to={"/CrearUsuario"}>¿No tiene cuenta? Registrese aquí</Link>}
-                                </Router>               
+
+                                    {<Link className="registrarse" to={"/CrearUsuario"}>¿No tiene cuenta? Registrese aquí</Link>}
+                                </Router>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
-            )
+        </div>
+    )
 }
