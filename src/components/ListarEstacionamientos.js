@@ -12,17 +12,6 @@ class ListarEstacionamientos extends React.Component {
         };
     }
 
-    borrarRegistros = (idPlayaDeEstacionamiento) => {
-        console.log(idPlayaDeEstacionamiento);
-        fetch(Api+"?borrar="+idPlayaDeEstacionamiento)
-            .then(respuesta => respuesta.json())
-            .then((datosRespuesta) => {
-                console.log(datosRespuesta);
-                this.cargarDatos();
-            })
-            .catch(console.log)
-    };
-
     cargarDatos() {
         fetch(Api)
             .then(respuesta => respuesta.json())
