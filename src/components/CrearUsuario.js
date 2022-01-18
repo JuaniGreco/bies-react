@@ -95,13 +95,6 @@ class CrearUsuario extends React.Component {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="">Repite la clave:</label>
-                            <input type="password" name="clave2" id="clave2" onChange={this.cambioValor} maxLength={20} value={clave} className={((this.verificarError("error_clave")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
-                            <small id="helpId" className="invalid-feedback">Ingrese clave</small>
-                            <br></br>
-                        </div>
-
-                        <div className="form-group">
                             <label htmlFor="">Email:</label>
                             <input type="text" name="email" id="email" onChange={this.cambioValor} maxLength={60} value={email} className={((this.verificarError("error_email")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
                             <small id="helpId" className="invalid-feedback">Ingrese email</small>
