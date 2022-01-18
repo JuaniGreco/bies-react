@@ -1,101 +1,37 @@
 import React from 'react';
-import Api from "../servicios/Api";
-import '../css/login.css';
 
-class ListaEstacionamientos extends React.Component {
+import AgregarEstacionamiento from "./AgregarEstacionamiento";
+import { Route, BrowserRouter as Router } from "react-router-dom";
+import { Link } from "react-router-dom";
+import VerEstacionamiento from "./VerEstacionamiento";
+import EditarEstacionamiento from "./EditarEstacionamiento";
+import '../css/login.css';
+import Listar from './AgregarEstacionamiento';
+import ListarEstacionamientos from './ListarEstacionamientos';
+
+class ListaEstacionamiento extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            datosCargados: false,
-            playadeestacionamiento: []
-        };
+        this.state = {}
     }
-
-   
-    ver = (idPlayaDeEstacionamiento) => {
-        console.log(idPlayaDeEstacionamiento);
-        fetch(idPlayaDeEstacionamiento)
-            .then(respuesta => respuesta.json())
-            .then((datosRespuesta) => {
-                console.log(datosRespuesta);
-                this.cargarDatos();
-            })
-            .catch(console.log)
-    };
-
-    cargarDatos() {
-        fetch(Api)
-            .then(respuesta => respuesta.json())
-            .then((datosRespuesta) => {
-                console.log(datosRespuesta);
-                this.setState({ datosCargados: true, playadeestacionamiento: datosRespuesta })
-            })
-            .catch(console.log)
-    }
-
-    componentDidMount() {
-        this.cargarDatos();
-    }
-
     render() {
-
-        const { datosCargados, playadeestacionamiento } = this.state
-
-        if (!datosCargados) { return (<div>Cargando...</div>); }
-        else {
-
-            return (
-                <div className="login">
-
-                    <div className="card-body">
-                        <h4 className='titulos'>Estacionamientos 🛑</h4>
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    {/* <th>ID</th> */}
-                                    <th>Nombre</th>
-                                    <th>Ubicacion</th>
-                                    <th>Capacidad</th>
-                                    <th>Observaciones</th>
-                                    {/* <th>Mapa</th> */}
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                {
-                                    playadeestacionamiento.map(
-                                        (estacionamiento) => (
-                                            <tr key={estacionamiento.idPlayaDeEstacionamiento}>
-                                                {/* <td>{estacionamiento.idPlayaDeEstacionamiento}</td> */}
-                                                <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
-                                                <td>{estacionamiento.ubicacion}</td>
-                                                <td>{estacionamiento.capacidad}</td>
-                                                <td>{estacionamiento.observaciones}</td>
-                                                {/* <td>{estacionamiento.mapa}</td> */}
-                                                <td>
-                                                    <div className="btn-group" role="group" aria-label="">
-                                                        {/*<Link className="btn btn-warning" 
-                                                        to={"/Editar/"+estacionamiento.idPlayaDeEstacionamiento}                                                        
-                                                        >Editar</Link>*/}
-                                                        <button type="button" className="btn btn-warning"
-                                                            onClick={() => this.ver()}>Ver</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        )
-                                    )
-                                }
-                            </tbody>
-                        </table>
+        return (
+            <Router>
+                <nav className="navbar navbar-expand navbar-light bg-light">
+                    <div className="nav navbar-nav">
+                        <Link className="nav-item nav-link active " to={"/"}>Estacionamientos</Link>
                     </div>
-                    <div className="card-footer text-muted">
+                </nav>
 
-                    </div>
+                <div className="container">
+                    <Route exact path="/" component={ListarEstacionamientos}></Route>
+                    <Route path="/VerEstacionamiento/:id" component={VerEstacionamiento}></Route>
+                   
                 </div>
+            </Router>
 
-            );
-        }
+        );
     }
 }
 
-export default ListaEstacionamientos;
+export default ListaEstacionamiento;

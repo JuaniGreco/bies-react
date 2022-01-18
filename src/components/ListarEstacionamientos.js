@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import Api from "../servicios/Api";
 
-class Listar extends React.Component {
+class ListarEstacionamientos extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -46,20 +46,16 @@ class Listar extends React.Component {
 
             return (
                 <div className="card">
-                    <div className="card-header">
-                      <Link className="btn btn-success" to={"/CrearEstacionamiento"}>➕ Agregar</Link> 
-                    </div>
                     <div className="card-body">
-                        <h4>Lista de Estacionamientos</h4>
                         <table className="table">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    
                                     <th>Nombre</th>
                                     <th>Ubicacion</th>
                                     <th>Capacidad</th>
                                     <th>Observaciones</th>
-                                    
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,20 +64,18 @@ class Listar extends React.Component {
                                     playadeestacionamiento.map(
                                         (estacionamiento) => (
                                             <tr key={estacionamiento.idPlayaDeEstacionamiento}>
-                                                <td>{estacionamiento.idPlayaDeEstacionamiento}</td>
+                                                
                                                 <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
                                                 <td>{estacionamiento.ubicacion}</td>
                                                 <td>{estacionamiento.capacidad}</td>
                                                 <td>{estacionamiento.observaciones}</td>
-                                                
+                                               
                                                 <td>
                                                     <div className="btn-group" role="group" aria-label="">
                                                         <Link className="btn btn-warning" 
-                                                        to={"/EditarEstacionamiento/"+estacionamiento.idPlayaDeEstacionamiento}                                                        
-                                                        >Editar</Link>
+                                                        to={"/VerEstacionamiento/"+estacionamiento.idPlayaDeEstacionamiento}                                                        
+                                                        >Ver</Link>
 
-                                                        <button type="button" className="btn btn-danger" 
-                                                          onClick={()=> this.borrarRegistros(estacionamiento.idPlayaDeEstacionamiento)}>Borrar</button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -101,4 +95,4 @@ class Listar extends React.Component {
     }
 }
 
-export default Listar;
+export default ListarEstacionamientos;
