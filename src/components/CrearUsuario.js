@@ -104,9 +104,6 @@ class CrearUsuario extends React.Component {
                         <div className="btn-group" role="group" aria-label="">
                             <button type="submit" className="btn btn-success">Registrarme</button>
                             <Link to={"/"} className="btn btn-cancel">Cancelar</Link>
-
-
-
                         </div>
                     </form>
 

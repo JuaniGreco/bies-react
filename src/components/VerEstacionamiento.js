@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Api from "../servicios/Api";
 import ReactPlayer from 'react-player';
 import '../css/login.css';
+import ApiEstacionar from '../servicios/ApiEstacionar';
 
 
 
@@ -13,10 +14,6 @@ class VerEstacionamiento extends React.Component {
             datosCargados: false,
             estacionamiento: []
         }
-
-        this.state = {
-            src: '/test/test.html'
-        };
     }
 
     cambioValor = (e) => {
@@ -62,9 +59,28 @@ class VerEstacionamiento extends React.Component {
             .catch(console.log)
     }
 
+    estacionar = (idPlayaDeEstacionamiento) => {
+        console.log(idPlayaDeEstacionamiento);
+        fetch(ApiEstacionar+"?estacionar="+idPlayaDeEstacionamiento+"&idUsuario="+34)
+            .then(respuesta => respuesta.json())
+            .then((datosRespuesta) => {
+                console.log(datosRespuesta);
+                this.cargarDatos();
+            })
+            .catch(console.log)
+    }
 
+    cargarDatos() {
+        fetch(Api)
+            .then(respuesta => respuesta.json())
+            .then((datosRespuesta) => {
+                console.log(datosRespuesta);
+                this.setState({ datosCargados: true, playadeestacionamiento: datosRespuesta })
+            })
+            .catch(console.log)
+    }
 
-
+    
 
     render() {
 
@@ -107,6 +123,10 @@ class VerEstacionamiento extends React.Component {
                             <div className="form-group">
                                 <a class="linkMapa" href={estacionamiento.mapa} target="_blank">Ver Mapa</a>
                             </div>
+
+                            <button type="button" className="btn btn-danger" 
+                                onClick={()=> this.estacionar(estacionamiento.idPlayaDeEstacionamiento)}>Estacionar</button>
+                                                    
 
                             <br></br>
                             <div className="btn-group" role="group" aria-label="">
