@@ -44,6 +44,7 @@ export default function Login(props) {
         console.log("respuesta", respuestaJson);
 
         props.acceder(respuestaJson.idRol) //obtengo el idRol del usuario
+        console.log(respuestaJson.idUsuario) //obtengo el idRol del usuario
     }
 
     return (

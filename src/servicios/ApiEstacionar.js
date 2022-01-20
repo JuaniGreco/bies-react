@@ -1,2 +1,2 @@
-const apiEstacionar="http://localhost/bies-react/abm.php";
+const apiEstacionar="http://localhost/bies-react/estacionar.php";
 export default apiEstacionar;
