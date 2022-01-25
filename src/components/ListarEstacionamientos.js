@@ -2,13 +2,19 @@ import React from 'react';
 
 import { Link } from "react-router-dom";
 import Api from "../servicios/Api";
+import ApiEstacionar from '../servicios/ApiEstacionar';
+import ApiConsultarUsuario from '../servicios/ApiConsultarUsuario';
 
 class ListarEstacionamientos extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             datosCargados: false,
-            playadeestacionamiento: []
+            datosCargadosUsuarios: false,
+            playadeestacionamiento: [],
+            usuarios: []
+            
+
         };
     }
 
@@ -22,15 +28,46 @@ class ListarEstacionamientos extends React.Component {
             .catch(console.log)
     }
 
+    cargarDatosUsuarios() {
+        fetch(ApiConsultarUsuario)
+            .then(respuestaUsuario => respuestaUsuario.json())
+            .then((datosRespuestaUsuarios) => {
+                console.log(datosRespuestaUsuarios);
+                this.setState({ datosCargadosUsuarios: true, usuarios: datosRespuestaUsuarios })
+            })
+            .catch(console.log)
+            
+    }
+
     componentDidMount() {
         this.cargarDatos();
+    }
+
+    componentDidMountUsuarios() {
+        this.cargarDatosUsuarios();
+               
+    }
+
+    
+
+
+    desestacionar = (idUsuario) => {
+        console.log(this.props.location.idUsuario);
+        fetch(ApiEstacionar + "?desestacionar" + "&idUsuario=" + idUsuario)
+            .then(respuestaUsuario  => respuestaUsuario .json())
+            .then((datosRespuestaUsuarios) => {
+                console.log(datosRespuestaUsuarios);
+                this.cargarDatosUsuarios();
+            })
+            .catch(console.log)
     }
 
     render() {
 
         const { datosCargados, playadeestacionamiento } = this.state
+        const { datosCargadosUsuarios, usuarios } = this.state
 
-        if (!datosCargados) { return (<div>Cargando...</div>); }
+        if (!datosCargados && !datosCargadosUsuarios) { return (<div>Cargando...</div>); }
         else {
 
             return (
@@ -39,7 +76,7 @@ class ListarEstacionamientos extends React.Component {
                         <table className="table">
                             <thead>
                                 <tr>
-                                    
+
                                     <th>Nombre</th>
                                     <th>Ubicacion</th>
                                     <th>Capacidad</th>
@@ -53,16 +90,16 @@ class ListarEstacionamientos extends React.Component {
                                     playadeestacionamiento.map(
                                         (estacionamiento) => (
                                             <tr key={estacionamiento.idPlayaDeEstacionamiento}>
-                                                
+
                                                 <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
                                                 <td>{estacionamiento.ubicacion}</td>
                                                 <td>{estacionamiento.capacidad}</td>
                                                 <td>{estacionamiento.observaciones}</td>
-                                               
+
                                                 <td>
                                                     <div className="btn-group" role="group" aria-label="">
-                                                        <Link className="btn btn-warning" 
-                                                        to={"/VerEstacionamiento/"+estacionamiento.idPlayaDeEstacionamiento}                                                        
+                                                        <Link className="btn btn-warning"
+                                                            to={"/VerEstacionamiento/" + estacionamiento.idPlayaDeEstacionamiento}
                                                         >Ver</Link>
 
                                                     </div>
@@ -70,16 +107,22 @@ class ListarEstacionamientos extends React.Component {
                                             </tr>
                                         )
                                     )
-                                }
+                                }                           
                             </tbody>
+                            
+                            
+                            <button type="button" className="btn btn-danger"
+                                 onClick={() => this.desestacionar()}>Desestacionar</button>
+
                         </table>
                     </div>
                     <div className="card-footer text-muted">
-                
+
                     </div>
                 </div>
 
             );
+
         }
     }
 }

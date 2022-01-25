@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import Api from "../servicios/Api";
-import ReactPlayer from 'react-player';
 import '../css/login.css';
 import ApiEstacionar from '../servicios/ApiEstacionar';
 
@@ -12,10 +11,12 @@ class VerEstacionamiento extends React.Component {
         super(props);
         this.state = {
             datosCargados: false,
-            estacionamiento: []
+            estacionamiento: [],
+            
+                        
         }
     }
-
+    
     cambioValor = (e) => {
         const state = this.state.estacionamiento;
 
@@ -69,6 +70,9 @@ class VerEstacionamiento extends React.Component {
             })
             .catch(console.log)
     }
+
+
+    
 
     cargarDatos() {
         fetch(Api)
@@ -126,7 +130,8 @@ class VerEstacionamiento extends React.Component {
 
                             <button type="button" className="btn btn-danger" 
                                 onClick={()=> this.estacionar(estacionamiento.idPlayaDeEstacionamiento)}>Estacionar</button>
-                                                    
+
+                                                   
 
                             <br></br>
                             <div className="btn-group" role="group" aria-label="">
