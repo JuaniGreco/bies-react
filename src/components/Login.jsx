@@ -3,7 +3,7 @@ import '../css/login.css';
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CrearUsuario from './CrearUsuario';
-import { Link } from "react-router-dom";
+import logo from '../imagenes/B-IES.ico'
 
 
 const URL_LOGIN = "http://localhost/bies-react/login.php";
@@ -53,65 +53,57 @@ export default function Login(props) {
 
 
     return (
+        <div className="wrapper fadeInDown">
+            <div id="formContent">
 
+                <div className="fadeIn first">
+                    <img src={logo} id="icon" alt="User Icon" />
+                </div>
 
-        
+                <div>
+                    <div>
+                        <span className="fadeIn second" id="basic-addon1">
+                            ✔️
+                        </span>
+                        <input
+                            type="text_diseño"
+                            className="form-control"
+                            placeholder="Ingrese su DNI"
+                            aria-label="dni"
+                            aria-describedby="basic-addon1"
+                            ref={refDni}
+                        />
+                    </div>
 
-            <div className="login">
-                <div className="row">
-                    <div className="col-sm-4 offset-4  mt-5">
-                        <div className="card pt-5">
-                            <div className="card-header titulosLogin">
-                                Inicia sesión en B-IES
-                            </div>
-                            <div className="card-body">
-                                <div className="input-group mb-3">
-                                    <span className="input-group-text" id="basic-addon1">
-                                        ✔️
-                                    </span>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Ingrese su DNI"
-                                        aria-label="dni"
-                                        aria-describedby="basic-addon1"
-                                        ref={refDni}
-                                    />
-                                </div>
+                    <div>
+                        <span className="fadeIn third" id="basic-addon2">
+                            🔒
+                        </span>
+                        <input
+                            type="text_diseño"
+                            className="form-control"
+                            placeholder="Ingrese su contraseña"
+                            aria-label="password"
+                            aria-describedby="basic-addon2"
+                            ref={refClave}
+                        />
+                    </div>
+                    <br></br>
+                    <div className='fadeIn fourth'>
+                        <button
+                            onClick={handleLogin}
+                            className="btn btn-outline-primary">Iniciar sesión</button>
 
-                                <div className="input-group mb-3">
-                                    <span className="input-group-text" id="basic-addon2">
-                                        🔒
-                                    </span>
-                                    <input
-                                        type="password"
-                                        className="form-control"
-                                        placeholder="Ingrese su contraseña"
-                                        aria-label="password"
-                                        aria-describedby="basic-addon2"
-                                        ref={refClave}
-                                    />
-                                </div>
-
-                                <div className='botones'>
-                                    <button
-                                        onClick={handleLogin}
-                                        className="btn btn-outline-primary">Iniciar sesión</button>
-
-                                </div>
-                                <div className="container">
-                                    <Router>
-                                        <div className="container">
-                                            <Route exact path="/CrearUsuario" component={CrearUsuario}></Route>
-                                        </div>
-
-                                        {<Link className="registrarse" to={"/CrearUsuario"}>¿No tiene cuenta? Registrese aquí</Link>}
-                                    </Router>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                    
+                    <div>
+                        <Router>
+                            <Route exact path="/CrearUsuario" component={CrearUsuario}></Route>
+                            <a className="underlineHover" href="/CrearUsuario">Crear Usuario</a>
+                        </Router>
                     </div>
                 </div>
             </div>
-            )
+        </div>
+    )
 }
