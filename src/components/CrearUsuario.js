@@ -73,30 +73,38 @@ class CrearUsuario extends React.Component {
                 </div>
                 <div className="card-body">
                     <form onSubmit={this.enviarDatos} >
-                        <div className="form-group">
-                            <label htmlFor="">Nombre y Apellido:</label>
-                            <input type="text" name="nombre" onChange={this.cambioValor} minLength={6} maxLength={50} value={nombre} id="nombre" className={((this.verificarError("error_nombre")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
+                        <div className="fadeIn second">
+                        <span className="fadeIn third" id="basic-addon2">
+                            🗨️
+                        </span>
+                            <input type="text_diseño" name="nombre" onChange={this.cambioValor} minLength={6} maxLength={50} value={nombre} id="nombre" className={((this.verificarError("error_nombre")) ? "is-invalid" : "") + " form-control"} placeholder="Ingrese Nombre" aria-describedby="helpId" />
                             <small id="helpId" className="invalid-feedback">Ingrese nombre y apellido</small>
                             <br></br>
                         </div>
 
-                        <div className="form-group">
-                            <label htmlFor="">Dni:</label>
-                            <input type="text" name="dni" id="dni" onChange={this.cambioValor} minLength={6} maxLength={9} value={dni} className={((this.verificarError("error_dni")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
+                        <div className="fadeIn second">
+                        <span className="fadeIn second" id="basic-addon1">
+                            ✔️
+                        </span>
+                            <input type="text_diseño" name="dni" id="dni" onChange={this.cambioValor} minLength={6} maxLength={9} value={dni} className={((this.verificarError("error_dni")) ? "is-invalid" : "") + " form-control"} placeholder="Ingrese DNI" aria-describedby="helpId" />
                             <small id="helpId" className="invalid-feedback">Ingrese dni</small>
                             <br></br>
                         </div>
 
-                        <div className="form-group">
-                            <label htmlFor="">Clave:</label>
-                            <input type="password" name="clave" id="clave" onChange={this.cambioValor} maxLength={20} value={clave} className={((this.verificarError("error_clave")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
+                        <div className="fadeIn second">
+                        <span className="fadeIn third" id="basic-addon2">
+                            🔒 
+                        </span>
+                            <input type="text_diseño" name="clave" id="clave" onChange={this.cambioValor} maxLength={20} value={clave} className={((this.verificarError("error_clave")) ? "is-invalid" : "") + " form-control"} placeholder="Ingrese Clave" aria-describedby="helpId" />
                             <small id="helpId" className="invalid-feedback">Ingrese clave</small>
                             <br></br>
                         </div>
 
-                        <div className="form-group">
-                            <label htmlFor="">Email:</label>
-                            <input type="text" name="email" id="email" onChange={this.cambioValor} maxLength={60} value={email} className={((this.verificarError("error_email")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
+                        <div className="fadeIn second">
+                        <span className="fadeIn third" id="basic-addon2">
+                            📧 
+                        </span>
+                            <input type="text_diseño" name="email" id="email" onChange={this.cambioValor} maxLength={60} value={email} className={((this.verificarError("error_email")) ? "is-invalid" : "") + " form-control"} placeholder="Ingrese Email" aria-describedby="helpId" />
                             <small id="helpId" className="invalid-feedback">Ingrese email</small>
                             <br></br>
                         </div>
