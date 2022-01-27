@@ -80,7 +80,7 @@ export default function Login(props) {
                             🔒
                         </span>
                         <input
-                            type="text_diseño"
+                            type="password"
                             className="form-control"
                             placeholder="Ingrese su contraseña"
                             aria-label="password"
