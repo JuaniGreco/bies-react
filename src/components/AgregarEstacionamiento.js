@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Link } from "react-router-dom";
 import Api from "../servicios/Api";
+import '../css/listarestacionamiento.css';
 
 class Listar extends React.Component {
     constructor(props) {
@@ -45,35 +46,31 @@ class Listar extends React.Component {
         else {
 
             return (
-                <div className="card">
-                    <div className="card-header">
+                <div className="tbl-header">
+                    <div className="tbl-header">
                       <Link className="btn btn-success" to={"/CrearEstacionamiento"}>➕ Agregar</Link> 
                     </div>
-                    <div className="card-body">
-                        <h4>Lista de Estacionamientos</h4>
-                        <table className="table">
+                    <div className="tbl-header">
+                        <table cellpadding="0" cellspacing="0" border="0">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Ubicacion</th>
-                                    <th>Capacidad</th>
-                                    <th>Observaciones</th>
-                                    
+                                    <th></th>                                    
                                 </tr>
                             </thead>
+                        </table>
+                        <div className="tbl-content">
+                        <table cellpadding="0" cellspacing="0" border="0">
                             <tbody>
 
                                 {
                                     playadeestacionamiento.map(
                                         (estacionamiento) => (
                                             <tr key={estacionamiento.idPlayaDeEstacionamiento}>
-                                                <td>{estacionamiento.idPlayaDeEstacionamiento}</td>
-                                                <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
-                                                <td>{estacionamiento.ubicacion}</td>
-                                                <td>{estacionamiento.capacidad}</td>
-                                                <td>{estacionamiento.observaciones}</td>
                                                 
+                                                <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
+                                                <td>{estacionamiento.ubicacion}</td>                                                                                                                                           
                                                 <td>
                                                     <div className="btn-group" role="group" aria-label="">
                                                         <Link className="btn btn-warning" 
@@ -90,6 +87,7 @@ class Listar extends React.Component {
                                 }
                             </tbody>
                         </table>
+                        </div>
                     </div>
                     <div className="card-footer text-muted">
                 

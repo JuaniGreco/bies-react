@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Api from "../servicios/Api";
 import ApiEstacionar from '../servicios/ApiEstacionar';
 import ApiConsultarUsuario from '../servicios/ApiConsultarUsuario';
+import '../css/listarestacionamiento.css';
 
 class ListarEstacionamientos extends React.Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class ListarEstacionamientos extends React.Component {
             datosCargadosUsuarios: false,
             playadeestacionamiento: [],
             usuarios: []
-            
+
 
         };
     }
@@ -36,7 +37,7 @@ class ListarEstacionamientos extends React.Component {
                 this.setState({ datosCargadosUsuarios: true, usuarios: datosRespuestaUsuarios })
             })
             .catch(console.log)
-            
+
     }
 
     componentDidMount() {
@@ -45,16 +46,16 @@ class ListarEstacionamientos extends React.Component {
 
     componentDidMountUsuarios() {
         this.cargarDatosUsuarios();
-               
+
     }
 
-    
+
 
 
     desestacionar = (idUsuario) => {
         console.log(this.props.location.idUsuario);
         fetch(ApiEstacionar + "?desestacionar" + "&idUsuario=" + idUsuario)
-            .then(respuestaUsuario  => respuestaUsuario .json())
+            .then(respuestaUsuario => respuestaUsuario.json())
             .then((datosRespuestaUsuarios) => {
                 console.log(datosRespuestaUsuarios);
                 this.cargarDatosUsuarios();
@@ -62,7 +63,11 @@ class ListarEstacionamientos extends React.Component {
             .catch(console.log)
     }
 
+
+
     render() {
+
+
 
         const { datosCargados, playadeestacionamiento } = this.state
         const { datosCargadosUsuarios, usuarios } = this.state
@@ -71,19 +76,21 @@ class ListarEstacionamientos extends React.Component {
         else {
 
             return (
-                <div className="card">
-                    <div className="card-body">
-                        <table className="table">
-                            <thead>
-                                <tr>
 
-                                    <th>Nombre</th>
-                                    <th>Ubicacion</th>
-                                    <th>Capacidad</th>
-                                    <th>Observaciones</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
+                <div className="tbl-header">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Ubicacion</th>
+                                <th>Capacidad</th>
+                                <th>Observaciones</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div className="tbl-content">
+                        <table cellpadding="0" cellspacing="0" border="0">
                             <tbody>
 
                                 {
@@ -107,19 +114,19 @@ class ListarEstacionamientos extends React.Component {
                                             </tr>
                                         )
                                     )
-                                }                           
+                                }
                             </tbody>
-                            
-                            
-                            <button type="button" className="btn btn-danger"
-                                 onClick={() => this.desestacionar()}>Desestacionar</button>
-
                         </table>
+
+
                     </div>
                     <div className="card-footer text-muted">
-
+                        <button type="button" className="btn btn-danger"
+                            onClick={() => this.desestacionar()}>Desestacionar</button>
                     </div>
                 </div>
+
+
 
             );
 
