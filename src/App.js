@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 
 import ListaEstacionamientos from "./components/ListaEstacionamientos";
 import AbmEstacionamiento from "./components/AbmEstacionamiento";
+import VerEstacionamiento from "./components/VerEstacionamiento";
 
 
 
@@ -13,13 +14,21 @@ function App() {
     setIdRol(estado)
   }
 
+  const [idUsuario, setIdUsuario] = useState(false);
+  const acceder2 = (estado2) => {
+    setIdUsuario(estado2)
+  }
+  console.log("IDUSUARIOLOG: ",idUsuario);
+  console.log("IDROL: ", idRol)
+
   const project = () => {
     switch (idRol) {
       case 1: return <AbmEstacionamiento />;
-      case 2: return <ListaEstacionamientos />;
+      case 2: return <ListaEstacionamientos acceder2={acceder2}/>;
 
       default: return <h1>Error...</h1>
     }
+    
   }
   return (
 
@@ -28,8 +37,12 @@ function App() {
       {
         (idRol)
           ? project()
-          : <Login acceder={acceder} />
+          : <Login acceder={acceder} acceder2={acceder2}/>
+          
       }
+
+      
+      
     </>
 
   );

@@ -1,6 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import '../css/login.css';
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CrearUsuario from './CrearUsuario';
 import logo from '../imagenes/B-IES.ico'
@@ -33,7 +32,7 @@ export default function Login(props) {
 
     const refDni = useRef(null);
     const refClave = useRef(null);
-
+    
 
 
     const handleLogin = async () => {
@@ -46,8 +45,9 @@ export default function Login(props) {
         console.log("respuesta", respuestaJson);
 
         props.acceder(respuestaJson.idRol) //obtengo el idRol del usuario
-        console.log(respuestaJson.idUsuario) //obtengo el idUsuario del usuario        
-        const idUsuario = respuestaJson.idUsuario;
+        props.acceder2(respuestaJson.idUsuario)//obtengo el idUsuario del usuario   
+        
+        
     }
 
 
@@ -95,7 +95,7 @@ export default function Login(props) {
                             className="btn btn-outline-primary">Iniciar sesión</button>
 
                     </div>
-                    
+
                     <div>
                         <Router>
                             <Route exact path="/CrearUsuario" component={CrearUsuario}></Route>
