@@ -49,7 +49,7 @@ class VerEstacionamiento extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.id);
+        
 
         fetch(Api + "?consultar=" + this.props.match.params.id)
             .then(respuesta => respuesta.json())
@@ -140,7 +140,7 @@ class VerEstacionamiento extends React.Component {
                             </div>
 
                             <button type="button" className="btn btn-danger"
-                                onClick={() => this.estacionar(estacionamiento.idPlayaDeEstacionamiento, this.props.acceder2)}>Estacionar</button>
+                                onClick={() => this.estacionar(estacionamiento.idPlayaDeEstacionamiento, this.props.usuario.idUsuario)}>Estacionar</button>
 
 
 

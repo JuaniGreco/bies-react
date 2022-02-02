@@ -14,7 +14,7 @@ class ListarEstacionamientos extends React.Component {
             datosCargadosUsuarios: false,
             playadeestacionamiento: [],
             usuarios: []
-
+            
 
         };
     }
@@ -53,7 +53,7 @@ class ListarEstacionamientos extends React.Component {
 
 
     desestacionar = (idUsuario) => {
-        console.log(this.props.location.idUsuario);
+        
         fetch(ApiEstacionar + "?desestacionar" + "&idUsuario=" + idUsuario)
             .then(respuestaUsuario => respuestaUsuario.json())
             .then((datosRespuestaUsuarios) => {
@@ -67,7 +67,7 @@ class ListarEstacionamientos extends React.Component {
 
     render() {
 
-
+        console.log("PROPS: ",this.props);
 
         const { datosCargados, playadeestacionamiento } = this.state
         const { datosCargadosUsuarios, usuarios } = this.state
@@ -122,7 +122,7 @@ class ListarEstacionamientos extends React.Component {
                     </div>
                     <div className="card-footer text-muted">
                         <button type="button" className="btn btn-danger"
-                            onClick={() => this.desestacionar()}>Desestacionar</button>
+                            onClick={() => this.desestacionar(this.props.usuario.idUsuario)}>Desestacionar</button>
                     </div>
                 </div>
 

@@ -44,8 +44,8 @@ export default function Login(props) {
         const respuestaJson = await enviarData(URL_LOGIN, data);
         console.log("respuesta", respuestaJson);
 
-        props.acceder(respuestaJson.idRol) //obtengo el idRol del usuario
-        props.acceder2(respuestaJson.idUsuario)//obtengo el idUsuario del usuario   
+        props.acceder(respuestaJson) //obtengo el idRol del usuario
+       
         
         
     }
