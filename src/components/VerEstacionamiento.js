@@ -1,5 +1,6 @@
-import React from 'react';
+
 import { Link } from "react-router-dom";
+import React, { useState } from 'react';
 import Api from "../servicios/Api";
 import '../css/login.css';
 import ApiEstacionar from '../servicios/ApiEstacionar';
@@ -9,14 +10,16 @@ import ApiEstacionar from '../servicios/ApiEstacionar';
 class VerEstacionamiento extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             datosCargados: false,
             estacionamiento: [],
-            
-                        
+
+
+
         }
     }
-    
+
     cambioValor = (e) => {
         const state = this.state.estacionamiento;
 
@@ -46,7 +49,7 @@ class VerEstacionamiento extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.id);
+        
 
         fetch(Api + "?consultar=" + this.props.match.params.id)
             .then(respuesta => respuesta.json())
@@ -60,9 +63,11 @@ class VerEstacionamiento extends React.Component {
             .catch(console.log)
     }
 
-    estacionar = (idPlayaDeEstacionamiento) => {
-        console.log(idPlayaDeEstacionamiento);
-        fetch(ApiEstacionar+"?estacionar="+idPlayaDeEstacionamiento+"&idUsuario="+34)
+    estacionar = (idPlayaDeEstacionamiento, idUsuario) => {
+
+
+        console.log("IdUSUARIO:", idUsuario);
+        fetch(ApiEstacionar + "?estacionar=" + idPlayaDeEstacionamiento + "&idUsuario=" + idUsuario)
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
                 console.log(datosRespuesta);
@@ -72,7 +77,7 @@ class VerEstacionamiento extends React.Component {
     }
 
 
-    
+
 
     cargarDatos() {
         fetch(Api)
@@ -84,10 +89,16 @@ class VerEstacionamiento extends React.Component {
             .catch(console.log)
     }
 
-    
+
+
+
 
     render() {
 
+        
+  
+
+        
         const { datosCargados, estacionamiento } = this.state
         if (!datosCargados) { return (<div>Cargando...</div>); }
         else {
@@ -128,10 +139,10 @@ class VerEstacionamiento extends React.Component {
                                 <a class="linkMapa" href={estacionamiento.mapa} target="_blank">Ver Mapa</a>
                             </div>
 
-                            <button type="button" className="btn btn-danger" 
-                                onClick={()=> this.estacionar(estacionamiento.idPlayaDeEstacionamiento)}>Estacionar</button>
+                            <button type="button" className="btn btn-danger"
+                                onClick={() => this.estacionar(estacionamiento.idPlayaDeEstacionamiento, this.props.usuario.idUsuario)}>Estacionar</button>
 
-                                                   
+
 
                             <br></br>
                             <div className="btn-group" role="group" aria-label="">

@@ -1,38 +1,47 @@
 import Login from "./components/Login";
 import React, { useState } from 'react';
-
-
+ 
+ 
 import ListaEstacionamientos from "./components/ListaEstacionamientos";
 import AbmEstacionamiento from "./components/AbmEstacionamiento";
-
-
-
+import VerEstacionamiento from "./components/VerEstacionamiento";
+ 
+ 
+ 
 function App() {
-  const [idRol, setIdRol] = useState(false);
+  const [usuario, setUsuario] = useState({});
   const acceder = (estado) => {
-    setIdRol(estado)
+    setUsuario(estado)
   }
-
+ 
+  console.log("IDUSUARIOLOG: ",usuario);
+ 
   const project = () => {
-    switch (idRol) {
+    switch (usuario.idRol) {
       case 1: return <AbmEstacionamiento />;
-      case 2: return <ListaEstacionamientos />;
-
+      case 2: return <ListaEstacionamientos usuario={usuario}/>;
+ 
       default: return <h1>Error...</h1>
     }
+   
   }
   return (
-
-
+ 
+ 
     <>
       {
-        (idRol)
+        (usuario?.idRol)
           ? project()
-          : <Login acceder={acceder} />
+          : <Login acceder={acceder}/>
+         
       }
+ 
+     
+     
     </>
-
+ 
   );
 }
-
+ 
 export default App;
+
