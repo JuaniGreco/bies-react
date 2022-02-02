@@ -13,14 +13,14 @@
 /* BASIC */
 
 html {
-    background-color: rgba(255, 255, 255, 0.883);
+    background-color: #7C0A02;
   }
   
   body {
     font-family: "Poppins", sans-serif;
     height: 100vh;
-    background: rgb(190,0,0);
-    background: linear-gradient(180deg, rgba(190,0,0,1) 49%, rgba(255,255,255,0) 100%);  
+    background: #7C0A02;
+     
 }  
   a {
     color: #92badd;
