@@ -49,7 +49,7 @@ class VerEstacionamiento extends React.Component {
     }
 
     componentDidMount() {
-        
+
 
         fetch(Api + "?consultar=" + this.props.match.params.id)
             .then(respuesta => respuesta.json())
@@ -95,10 +95,10 @@ class VerEstacionamiento extends React.Component {
 
     render() {
 
-        
-  
 
-        
+
+
+
         const { datosCargados, estacionamiento } = this.state
         if (!datosCargados) { return (<div>Cargando...</div>); }
         else {
@@ -135,19 +135,16 @@ class VerEstacionamiento extends React.Component {
                             </div>
 
                             <br></br>
-                            <div className="form-group">
-                                <a class="linkMapa" href={estacionamiento.mapa} target="_blank">Ver Mapa</a>
+                            <div>
+                                <a class="b_linkMapa" href={estacionamiento.mapa} target="_blank">Ver Mapa</a>{' '}
+
+                                <button  className="b_estacionar"
+                                    onClick={() => this.estacionar(estacionamiento.idPlayaDeEstacionamiento, this.props.usuario.idUsuario)}>Estacionar</button>
                             </div>
-
-                            <button type="button" className="btn btn-danger"
-                                onClick={() => this.estacionar(estacionamiento.idPlayaDeEstacionamiento, this.props.usuario.idUsuario)}>Estacionar</button>
-
-
-
                             <br></br>
-                            <div className="btn-group" role="group" aria-label="">
-                                <Link to={"/"} className="btn btn-success">Volver</Link>
-                            </div>
+                            <Link to={"/"} className="btn btn-success">Volver</Link>
+
+
                         </form>
                     </div>
                     <div className="card-footer text-muted">
