@@ -74,6 +74,9 @@ class VerEstacionamiento extends React.Component {
                 this.cargarDatos();
             })
             .catch(console.log)
+
+            alert('Usted se ha estacionado.');
+              
     }
 
 
@@ -87,18 +90,15 @@ class VerEstacionamiento extends React.Component {
                 this.setState({ datosCargados: true, playadeestacionamiento: datosRespuesta })
             })
             .catch(console.log)
+
+            
     }
 
-
+     
 
 
 
     render() {
-
-
-
-
-
         const { datosCargados, estacionamiento } = this.state
         if (!datosCargados) { return (<div>Cargando...</div>); }
         else {
