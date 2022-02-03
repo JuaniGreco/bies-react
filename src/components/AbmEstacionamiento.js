@@ -24,8 +24,7 @@ class AbmEstacionamiento extends React.Component {
                 <div className="container">
                     <Route exact path="/" component={AgregarEstacionamiento}></Route>
                     <Route path="/CrearEstacionamiento" component={CrearEstacionamiento}></Route>
-                    <Route path="/EditarEstacionamiento/:id" component={EditarEstacionamiento}></Route>
-                   
+                    <Route path="/EditarEstacionamiento/:id" component={EditarEstacionamiento}></Route>                   
                 </div>
             </Router>
 

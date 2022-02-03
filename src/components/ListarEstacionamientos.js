@@ -61,6 +61,8 @@ class ListarEstacionamientos extends React.Component {
                 this.cargarDatosUsuarios();
             })
             .catch(console.log)
+
+            alert('Usted ha dejado el estacionamiento.');
     }
 
 
