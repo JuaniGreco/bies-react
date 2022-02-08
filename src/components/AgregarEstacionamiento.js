@@ -48,12 +48,13 @@ class Listar extends React.Component {
             return (
                 <div className="tbl-header">
                     <div className="tbl-header">
-                      <Link className="btn btn-success" to={"/CrearEstacionamiento"}>➕ Agregar</Link> 
+                      <Link className="btn btn-success" to={"/CrearEstacionamiento"}>➕ Agregar Estacionamiento</Link> 
                     </div>
                     <div className="tbl-header">
                         <table cellpadding="0" cellspacing="0" border="0">
                             <thead>
                                 <tr>
+                                    <th>ID Estacionamiento</th>
                                     <th>Nombre</th>
                                     <th>Ubicacion</th>
                                     <th></th>                                    
@@ -68,7 +69,7 @@ class Listar extends React.Component {
                                     playadeestacionamiento.map(
                                         (estacionamiento) => (
                                             <tr key={estacionamiento.idPlayaDeEstacionamiento}>
-                                                
+                                                <td>{estacionamiento.idPlayaDeEstacionamiento}</td>
                                                 <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
                                                 <td>{estacionamiento.ubicacion}</td>                                                                                                                                           
                                                 <td>
