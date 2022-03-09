@@ -54,8 +54,8 @@ class Listar extends React.Component {
                         <table cellpadding="0" cellspacing="0" border="0">
                             <thead>
                                 <tr>
-                                    <th>ID Estacionamiento</th>
                                     <th>Nombre</th>
+                                    <th>ID Estacionamiento</th>                                    
                                     <th>Ubicacion</th>
                                     <th></th>                                    
                                 </tr>
@@ -69,8 +69,8 @@ class Listar extends React.Component {
                                     playadeestacionamiento.map(
                                         (estacionamiento) => (
                                             <tr key={estacionamiento.idPlayaDeEstacionamiento}>
-                                                <td>{estacionamiento.idPlayaDeEstacionamiento}</td>
                                                 <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
+                                                <td>{estacionamiento.idPlayaDeEstacionamiento}</td>                                                
                                                 <td>{estacionamiento.ubicacion}</td>                                                                                                                                           
                                                 <td>
                                                     <div className="btn-group" role="group" aria-label="">

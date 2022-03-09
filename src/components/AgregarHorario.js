@@ -54,7 +54,7 @@ class Listar extends React.Component {
                         <table cellpadding="0" cellspacing="0" border="0">
                             <thead>
                                 <tr>
-                                    <th>ID </th>
+                                    <th>ID del Horario</th>
                                     <th>ID Playa de Estacionamiento</th>
                                     <th>Dia de la Semana</th>
                                     <th>Hora Inicio</th>

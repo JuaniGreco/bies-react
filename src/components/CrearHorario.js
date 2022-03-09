@@ -80,7 +80,7 @@ class Crear extends React.Component {
                         <br></br>
                         <label htmlFor="">Dia de la Semana:</label>
                         <input type="number" name="diaSemana" id="diaSemana" onChange={this.cambioValor} pattern="[0-6]" size="1" min="0" max="6" value={diaSemana} className={((this.verificarError("error_diaSemana")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
-                        <small id="helpId" className="text-muted">0:Lunes  1:Martes  2:Miercoles  3:Jueves  4:Viernes  5:Sabado  6:Domingo</small>
+                        <small id="helpId" className="text-muted">1:Lunes  2:Martes  3:Miercoles  4:Jueves  5:Viernes  6:Sabado  0:Domingo</small>
                         <br></br>
                     </div>
 
