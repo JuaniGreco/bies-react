@@ -30,10 +30,10 @@ class VerEstacionamiento extends React.Component {
     enviarDatos = (e) => {
         e.preventDefault();
         console.log("Formulario enviado");
-        const { idPlayaDeEstacionamiento, nombrePlayaDeEstacionamiento, ubicacion, capacidad, observaciones, mapa } = this.state.estacionamiento;
+        const { idPlayaDeEstacionamiento, nombrePlayaDeEstacionamiento, ubicacion, observaciones, mapa, lugaresLibres} = this.state.estacionamiento;
 
 
-        var datosEnviar = { idPlayaDeEstacionamiento: idPlayaDeEstacionamiento, nombrePlayaDeEstacionamiento: nombrePlayaDeEstacionamiento, ubicacion: ubicacion, capacidad: capacidad, observaciones: observaciones, mapa: mapa }
+        var datosEnviar = { idPlayaDeEstacionamiento: idPlayaDeEstacionamiento, nombrePlayaDeEstacionamiento: nombrePlayaDeEstacionamiento, ubicacion: ubicacion, observaciones: observaciones, mapa: mapa, lugaresLibres: lugaresLibres }
 
         fetch(Api + "?actualizar=1", {
             method: "POST",
@@ -76,7 +76,6 @@ class VerEstacionamiento extends React.Component {
             .catch(console.log)
 
             alert('Usted se ha estacionado.');
-              
     }
 
 
@@ -123,8 +122,8 @@ class VerEstacionamiento extends React.Component {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="">Capacidad:</label>
-                                <input type="text" readOnly name="capacidad" id="capacidad" onChange={this.cambioValor} value={estacionamiento.capacidad} className="form-control" placeholder="" aria-describedby="helpId" />
+                                <label htmlFor="">Lugares Libres:</label>
+                                <input type="text" readOnly name="lugaresLibres" id="lugaresLibres" onChange={this.cambioValor} value={estacionamiento.lugaresLibres} className="form-control" placeholder="" aria-describedby="helpId" />
 
                             </div>
 

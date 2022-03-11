@@ -22,15 +22,16 @@ class Editar extends React.Component {
     enviarDatos = (e) =>{
         e.preventDefault();
         console.log("Formulario enviado");
-        const{idPlayaDeEstacionamiento,nombrePlayaDeEstacionamiento,ubicacion,capacidad,observaciones,mapa}= this.state.estacionamiento;
+        const{idPlayaDeEstacionamiento,nombrePlayaDeEstacionamiento,ubicacion,capacidad,observaciones,mapa, lugaresLibres}= this.state.estacionamiento;
         console.log(idPlayaDeEstacionamiento);
         console.log(nombrePlayaDeEstacionamiento);
         console.log(ubicacion);
         console.log(capacidad);
         console.log(observaciones);
         console.log(mapa);
+        console.log(lugaresLibres);
 
-        var datosEnviar={idPlayaDeEstacionamiento:idPlayaDeEstacionamiento, nombrePlayaDeEstacionamiento:nombrePlayaDeEstacionamiento, ubicacion:ubicacion, capacidad:capacidad, observaciones:observaciones, mapa:mapa}
+        var datosEnviar={idPlayaDeEstacionamiento:idPlayaDeEstacionamiento, nombrePlayaDeEstacionamiento:nombrePlayaDeEstacionamiento, ubicacion:ubicacion, capacidad:capacidad, observaciones:observaciones, mapa:mapa, lugaresLibres:capacidad};
 
         fetch(Api+"?actualizar=1",{
             method:"POST",

@@ -85,14 +85,14 @@ class ListarEstacionamientos extends React.Component {
                             <tr>
                                 <th>Nombre</th>
                                 <th>Ubicacion</th>
-                                <th>Capacidad</th>
+                                <th>Lugares Libres</th>
                                 <th>Observaciones</th>
                                 <th></th>
                             </tr>
                         </thead>
                     </table>
                     <div className="tbl-content">
-                        <table cellpadding="0" cellspacing="0" border="0">
+                        <table cellPadding="0" cellSpacing="0" border="0">
                             <tbody>
 
                                 {
@@ -102,7 +102,7 @@ class ListarEstacionamientos extends React.Component {
 
                                                 <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
                                                 <td>{estacionamiento.ubicacion}</td>
-                                                <td>{estacionamiento.capacidad}</td>
+                                                <td>{estacionamiento.lugaresLibres}</td>
                                                 <td>{estacionamiento.observaciones}</td>
 
                                                 <td>
