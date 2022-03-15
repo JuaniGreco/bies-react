@@ -1,2 +1,2 @@
-const apiConsultarUsuario="http://localhost/bies-react/consultar_usuario.php";
+const apiConsultarUsuario="";
 export default apiConsultarUsuario;

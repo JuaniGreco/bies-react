@@ -80,7 +80,7 @@ class ListarEstacionamientos extends React.Component {
             return (
 
                 <div className="tbl-header">
-                    <table cellpadding="0" cellspacing="0" border="0">
+                    <table cellPadding="0" cellSpacing="0" border="0">
                         <thead>
                             <tr>
                                 <th>Nombre</th>

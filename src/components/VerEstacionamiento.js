@@ -74,8 +74,6 @@ class VerEstacionamiento extends React.Component {
                 this.cargarDatos();
             })
             .catch(console.log)
-
-            alert('Usted se ha estacionado.');
     }
 
 
@@ -92,10 +90,6 @@ class VerEstacionamiento extends React.Component {
 
             
     }
-
-     
-
-
 
     render() {
         const { datosCargados, estacionamiento } = this.state
@@ -135,7 +129,7 @@ class VerEstacionamiento extends React.Component {
 
                             <br></br>
                             <div>
-                                <a class="b_linkMapa" href={estacionamiento.mapa} target="_blank">Ver Mapa</a>{' '}
+                                <a className="b_linkMapa" href={estacionamiento.mapa} target="_blank">Ver Mapa</a>{' '}
 
                                 <button  className="b_estacionar"
                                     onClick={() => this.estacionar(estacionamiento.idPlayaDeEstacionamiento, this.props.usuario.idUsuario)}>Estacionar</button>

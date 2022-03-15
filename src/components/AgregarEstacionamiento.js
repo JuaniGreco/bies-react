@@ -51,7 +51,7 @@ class Listar extends React.Component {
                       <Link className="btn btn-success" to={"/CrearEstacionamiento"}>➕ Agregar Estacionamiento</Link> 
                     </div>
                     <div className="tbl-header">
-                        <table cellpadding="0" cellspacing="0" border="0">
+                        <table cellPadding="0" cellSpacing="0" border="0">
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
@@ -62,7 +62,7 @@ class Listar extends React.Component {
                             </thead>
                         </table>
                         <div className="tbl-content">
-                        <table cellpadding="0" cellspacing="0" border="0">
+                        <table cellPadding="0" cellSpacing="0" border="0">
                             <tbody>
 
                                 {
