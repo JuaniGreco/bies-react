@@ -6,20 +6,16 @@ import '../css/login.css';
 import ApiEstacionar from '../servicios/ApiEstacionar';
 
 
-
 class VerEstacionamiento extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             datosCargados: false,
             estacionamiento: [],
-
-
-
+            estacionado: ""
         }
     }
-
+    
     cambioValor = (e) => {
         const state = this.state.estacionamiento;
 
@@ -63,17 +59,23 @@ class VerEstacionamiento extends React.Component {
             .catch(console.log)
     }
 
-    estacionar = (idPlayaDeEstacionamiento, idUsuario) => {
-
-
+    estacionar = (idPlayaDeEstacionamiento, idUsuario, estacionado) => {
         console.log("IdUSUARIO:", idUsuario);
+        console.log("estacionado:", estacionado);
         fetch(ApiEstacionar + "?estacionar=" + idPlayaDeEstacionamiento + "&idUsuario=" + idUsuario)
-            .then(respuesta => respuesta.json())
-            .then((datosRespuesta) => {
-                console.log(datosRespuesta);
-                this.cargarDatos();
-            })
-            .catch(console.log)
+            .then (respuesta => estacionado.setState(respuesta))
+            .then(respuesta => respuesta === "estacionado" ? this.setState("estacionado") 
+                                : respuesta === "ya_estacionado" ? this.setState({ estacionado: "ya_estacionado" })
+                                    : this.setState({ estacionado: "sin_horario" }));
+            // .then((datosRespuesta) => {
+            //     console.log(datosRespuesta);
+            //     this.cargarDatos();  
+            // })
+            //.catch(console.log);
+            console.log(estacionado);
+        estacionado === "estacionado" ? alert("Usted se ha estacionado") : 
+        estacionado ==="ya_estacionado" ? alert("Usted ya se encuentra estacionado con anterioridad") : 
+        alert("No está en horario para estacionarse");
     }
 
 
@@ -84,7 +86,7 @@ class VerEstacionamiento extends React.Component {
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
                 console.log(datosRespuesta);
-                this.setState({ datosCargados: true, playadeestacionamiento: datosRespuesta })
+                this.setState({ datosCargados: true, playadeestacionamiento: datosRespuesta, estacionado: true });
             })
             .catch(console.log)
 
