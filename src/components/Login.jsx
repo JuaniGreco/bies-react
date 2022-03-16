@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import '../css/login.css';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import CrearUsuario from './CrearUsuario';
 import logo from '../imagenes/B-IES.ico'
 
@@ -32,8 +32,6 @@ export default function Login(props) {
 
     const refDni = useRef(null);
     const refClave = useRef(null);
-    
-
 
     const handleLogin = async () => {
         const data = {
@@ -45,14 +43,16 @@ export default function Login(props) {
         console.log("respuesta", respuestaJson);
 
         props.acceder(respuestaJson) //obtengo el idRol del usuario
-       
-        
-        
     }
 
-
+    const handleKeyDown = (e) => {
+        if(e.keyCode === 13){
+            handleLogin();
+        }
+    }
 
     return (
+        
         <div className="wrapper fadeInDown">
             <div id="formContent">
 
@@ -86,15 +86,19 @@ export default function Login(props) {
                             aria-label="password"
                             aria-describedby="basic-addon2"
                             ref={refClave}
+                            onKeyDown = {handleKeyDown}
                         />
                     </div>
                     <br></br>
                     <div className='fadeIn fourth'>
                         <button
                             onClick={handleLogin}
-                            className="btn btn-outline-primary">Iniciar sesión</button>
+                            className="btn btn-outline-primary">
+                            Iniciar sesión</button>
 
                     </div>
+
+                    
 
                     <div>
                         <Router>

@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import React, { useState } from 'react';
+import React from 'react';
 import Api from "../servicios/Api";
 import '../css/login.css';
 import ApiEstacionar from '../servicios/ApiEstacionar';
@@ -129,7 +129,7 @@ class VerEstacionamiento extends React.Component {
 
                             <br></br>
                             <div>
-                                <a className="b_linkMapa" href={estacionamiento.mapa} target="_blank">Ver Mapa</a>{' '}
+                                <a className="b_linkMapa" href={estacionamiento.mapa} target="_blank" rel="noreferrer">Ver Mapa</a>{' '}
 
                                 <button  className="b_estacionar"
                                     onClick={() => this.estacionar(estacionamiento.idPlayaDeEstacionamiento, this.props.usuario.idUsuario)}>Estacionar</button>

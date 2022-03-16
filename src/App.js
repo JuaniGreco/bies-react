@@ -4,8 +4,6 @@ import React, { useState } from 'react';
  
 import ListaEstacionamientos from "./components/ListaEstacionamientos";
 import AbmEstacionamiento from "./components/AbmEstacionamiento";
-import VerEstacionamiento from "./components/VerEstacionamiento";
- 
  
  
 function App() {

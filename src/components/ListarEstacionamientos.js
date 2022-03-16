@@ -54,7 +54,7 @@ class ListarEstacionamientos extends React.Component {
 
     desestacionar = (idUsuario) => {
         
-        fetch(ApiEstacionar + "?desestacionar" + "&idUsuario=" + idUsuario)
+        fetch(ApiEstacionar+"?desestacionar"+"&idUsuario="+idUsuario)
             .then(respuestaUsuario => respuestaUsuario.json())
             .then((datosRespuestaUsuarios) => {
                 console.log(datosRespuestaUsuarios);
@@ -72,7 +72,7 @@ class ListarEstacionamientos extends React.Component {
         console.log("PROPS: ",this.props);
 
         const { datosCargados, playadeestacionamiento } = this.state
-        const { datosCargadosUsuarios, usuarios } = this.state
+        const { datosCargadosUsuarios } = this.state
 
         if (!datosCargados && !datosCargadosUsuarios) { return (<div>Cargando...</div>); }
         else {
