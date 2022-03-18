@@ -59,23 +59,21 @@ class VerEstacionamiento extends React.Component {
             .catch(console.log)
     }
 
-    estacionar = (idPlayaDeEstacionamiento, idUsuario, estacionado) => {
+    estacionar = (idPlayaDeEstacionamiento, idUsuario) => {
         console.log("IdUSUARIO:", idUsuario);
-        console.log("estacionado:", estacionado);
         fetch(ApiEstacionar + "?estacionar=" + idPlayaDeEstacionamiento + "&idUsuario=" + idUsuario)
-            .then (respuesta => estacionado.setState(respuesta))
-            .then(respuesta => respuesta === "estacionado" ? this.setState("estacionado") 
-                                : respuesta === "ya_estacionado" ? this.setState({ estacionado: "ya_estacionado" })
-                                    : this.setState({ estacionado: "sin_horario" }));
-            // .then((datosRespuesta) => {
-            //     console.log(datosRespuesta);
-            //     this.cargarDatos();  
-            // })
-            //.catch(console.log);
-            console.log(estacionado);
-        estacionado === "estacionado" ? alert("Usted se ha estacionado") : 
-        estacionado ==="ya_estacionado" ? alert("Usted ya se encuentra estacionado con anterioridad") : 
-        alert("No está en horario para estacionarse");
+            .then(response => response.json()
+            .then(data => {
+                
+                console.log(data.data);
+                this.cargarDatos();
+                data.data === "estacionado" ? (alert("Te has estacionado")) 
+                : data.data === "ya_estacionado" ? (alert ("Ya estabas estacionado con anterioridad, desestacione y vuelva a intentar"))
+                : (alert ("El estacionamiento se encuentra cerrado"));
+                console.log(data.data);
+            }))
+            .catch(console.log)
+            //alert('Usted se ha estacionado.');
     }
 
 
