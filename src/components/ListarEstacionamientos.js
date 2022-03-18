@@ -54,15 +54,14 @@ class ListarEstacionamientos extends React.Component {
 
     desestacionar = (idUsuario) => {
         
-        fetch(ApiEstacionar+"?desestacionar"+"&idUsuario="+idUsuario)
-            .then(respuestaUsuario => respuestaUsuario.json())
-            .then((datosRespuestaUsuarios) => {
-                console.log(datosRespuestaUsuarios);
+        fetch(ApiEstacionar + "?desestacionar" + "&idUsuario=" + idUsuario)
+            .then(response => response.json()
+            .then(data => {
+                console.log(data.data);
                 this.cargarDatosUsuarios();
-            })
+                data.data === "desestacionado" ? (alert("Usted ha dejado el estacionamiento.")) : (alert("No se pudo desestacionar porque no estaba estacionado"));
+            }))
             .catch(console.log)
-
-            alert('Usted ha dejado el estacionamiento.');
     }
 
 
