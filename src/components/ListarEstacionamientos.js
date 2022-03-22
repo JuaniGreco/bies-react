@@ -14,8 +14,6 @@ class ListarEstacionamientos extends React.Component {
             datosCargadosUsuarios: false,
             playadeestacionamiento: [],
             usuarios: []
-            
-
         };
     }
 
@@ -46,7 +44,6 @@ class ListarEstacionamientos extends React.Component {
 
     componentDidMountUsuarios() {
         this.cargarDatosUsuarios();
-
     }
 
 
@@ -54,15 +51,14 @@ class ListarEstacionamientos extends React.Component {
 
     desestacionar = (idUsuario) => {
         
-        fetch(ApiEstacionar+"?desestacionar"+"&idUsuario="+idUsuario)
-            .then(respuestaUsuario => respuestaUsuario.json())
-            .then((datosRespuestaUsuarios) => {
-                console.log(datosRespuestaUsuarios);
+        fetch(ApiEstacionar + "?desestacionar" + "&idUsuario=" + idUsuario)
+            .then(response => response.json()
+            .then(data => {
+                console.log(data.data);
                 this.cargarDatosUsuarios();
-            })
+                data.data === "desestacionado" ? (alert("Usted ha dejado el estacionamiento.")) : (alert("No se pudo desestacionar porque no estaba estacionado"));
+            }))
             .catch(console.log)
-
-            alert('Usted ha dejado el estacionamiento.');
     }
 
 
@@ -78,7 +74,6 @@ class ListarEstacionamientos extends React.Component {
         else {
 
             return (
-
                 <div className="tbl-header">
                     <table cellPadding="0" cellSpacing="0" border="0">
                         <thead>
@@ -94,23 +89,19 @@ class ListarEstacionamientos extends React.Component {
                     <div className="tbl-content">
                         <table cellPadding="0" cellSpacing="0" border="0">
                             <tbody>
-
                                 {
                                     playadeestacionamiento.map(
                                         (estacionamiento) => (
                                             <tr key={estacionamiento.idPlayaDeEstacionamiento}>
-
                                                 <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
                                                 <td>{estacionamiento.ubicacion}</td>
                                                 <td>{estacionamiento.lugaresLibres}</td>
                                                 <td>{estacionamiento.observaciones}</td>
-
                                                 <td>
                                                     <div className="btn-group" role="group" aria-label="">
                                                         <Link className="btn btn-warning"
                                                             to={"/VerEstacionamiento/" + estacionamiento.idPlayaDeEstacionamiento}
                                                         >Ver</Link>
-
                                                     </div>
                                                 </td>
                                             </tr>

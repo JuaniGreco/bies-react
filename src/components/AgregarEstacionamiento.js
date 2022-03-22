@@ -48,14 +48,13 @@ class Listar extends React.Component {
             return (
                 <div className="tbl-header">
                     <div className="tbl-header">
-                      <Link className="btn btn-success" to={"/CrearEstacionamiento"}>➕ Agregar Estacionamiento</Link> 
+                        <Link className="btn btn-success" to={"/CrearEstacionamiento"}>➕ Agregar Estacionamiento</Link> 
                     </div>
                     <div className="tbl-header">
                         <table cellPadding="0" cellSpacing="0" border="0">
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>ID Estacionamiento</th>                                    
+                                    <th>Nombre</th>                                   
                                     <th>Ubicacion</th>
                                     <th></th>                                    
                                 </tr>
@@ -69,8 +68,7 @@ class Listar extends React.Component {
                                     playadeestacionamiento.map(
                                         (estacionamiento) => (
                                             <tr key={estacionamiento.idPlayaDeEstacionamiento}>
-                                                <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
-                                                <td>{estacionamiento.idPlayaDeEstacionamiento}</td>                                                
+                                                <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>                                               
                                                 <td>{estacionamiento.ubicacion}</td>                                                                                                                                           
                                                 <td>
                                                     <div className="btn-group" role="group" aria-label="">
@@ -79,7 +77,7 @@ class Listar extends React.Component {
                                                         >Editar</Link>
 
                                                         <button type="button" className="btn btn-danger" 
-                                                          onClick={()=> this.borrarRegistros(estacionamiento.idPlayaDeEstacionamiento)}>Borrar</button>
+                                                            onClick={()=> this.borrarRegistros(estacionamiento.idPlayaDeEstacionamiento)}>Borrar</button>
                                                     </div>
                                                 </td>
                                             </tr>

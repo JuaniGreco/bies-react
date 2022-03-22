@@ -45,8 +45,6 @@ class VerEstacionamiento extends React.Component {
     }
 
     componentDidMount() {
-
-
         fetch(Api + "?consultar=" + this.props.match.params.id)
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {

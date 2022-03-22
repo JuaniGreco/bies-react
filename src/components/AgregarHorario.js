@@ -55,7 +55,7 @@ class Listar extends React.Component {
                             <thead>
                                 <tr>
                                     <th>ID del Horario</th>
-                                    <th>ID Playa de Estacionamiento</th>
+                                    <th>Nombre</th>
                                     <th>Dia de la Semana</th>
                                     <th>Hora Inicio</th>
                                     <th>Hora Fin</th>
@@ -73,8 +73,8 @@ class Listar extends React.Component {
                                                 <tr key={estacionamientohorario.idHorario}>
 
                                                     <td>{estacionamientohorario.idHorario}</td>
-                                                    <td>{estacionamientohorario.idPlayaDeEstacionamiento}</td>
-                                                    <td>{estacionamientohorario.diaSemana}</td>
+                                                    <td>{estacionamientohorario.nombrePlayaDeEstacionamiento}</td>
+                                                    <td>{estacionamientohorario.nombreDia}</td>
                                                     <td>{estacionamientohorario.horaInicio}</td>
                                                     <td>{estacionamientohorario.horaFin}</td>
                                                     <td>

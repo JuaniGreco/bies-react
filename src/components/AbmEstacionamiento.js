@@ -20,7 +20,7 @@ class AbmEstacionamiento extends React.Component {
             <Router>
                 <nav className="navbar navbar-expand navbar-light bg-light">
                     <div className="nav navbar-nav">
-                        <Link className="nav-item nav-link active " to={"/"}>⚙️ABM</Link>
+                        <Link className="nav-item nav-link active " to={"/"}>⚙️PANEL DE ADMINISTRACIÓN</Link>
                     </div>
                 </nav>
 
