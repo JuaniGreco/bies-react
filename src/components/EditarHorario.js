@@ -22,9 +22,9 @@ class Editar extends React.Component {
     enviarDatos = (e) => {
         e.preventDefault();
 
-        const { idHorario, idPlayaDeEstacionamiento, diaSemana, horaInicio, horaFin } = this.state.estacionamientohorario;
+        const { idHorario, idPlayaDeEstacionamiento, nombreDia, horaInicio, horaFin } = this.state.estacionamientohorario;
 
-        var datosEnviar = { idHorario: idHorario, idPlayaDeEstacionamiento: idPlayaDeEstacionamiento, diaSemana: diaSemana, horaInicio: horaInicio, horaFin: horaFin }
+        var datosEnviar = { idHorario: idHorario, idPlayaDeEstacionamiento: idPlayaDeEstacionamiento, nombreDia: nombreDia, horaInicio: horaInicio, horaFin: horaFin }
 
         fetch(apiHorarios + "?actualizar=1", {
             method: "POST",
@@ -86,8 +86,7 @@ class Editar extends React.Component {
                             <div className="form-group">
                                 <br></br>
                                 <label htmlFor="">Dia de la Semana:</label>
-                                <input type="text" name="diaSemanas" id="diaSemanas" onChange={this.cambioValor} minLength={1} maxLength={7} value={estacionamientohorario.diaSemana} className="form-control" placeholder="" aria-describedby="helpId" />
-                                <small id="helpId" className="text-muted">0:Lunes  1:Martes  2:Miercoles  3:Jueves  4:Viernes  5:Sabado  6:Domingo</small>
+                                <input type="text" name="nombreDia" id="nombreDia" onChange={this.cambioValor} minLength={1} maxLength={7} value={estacionamientohorario.nombreDia} className="form-control" placeholder="" aria-describedby="helpId" />
                             </div>
 
                             <div className="form-group">
