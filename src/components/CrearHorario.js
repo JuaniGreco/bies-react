@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import apiHorarios from "../servicios/ApiHorarios";
+import SeleccionarDiaSemana from './SeleccionarDiaSemana';
+import SeleccionarEstacionamiento from './SeleccionarEstacionamiento';
+
 
 class Crear extends React.Component {
     constructor(props) {
@@ -71,16 +74,14 @@ class Crear extends React.Component {
             <div className="card-body">
                 <form onSubmit={this.enviarDatos} >
                     <div className="form-group">
-                        <label htmlFor="">ID Playa Estacionamiento:</label>
-                        <input type="text" name="idPlayaDeEstacionamiento" onChange={this.cambioValor} minLength={1} maxLength={50} value={idPlayaDeEstacionamiento} id="idPlayaDeEstacionamiento" className={((this.verificarError("error_idPlayaDeEstacionamiento")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
-                        <small id="helpId" className="text-muted">Ingrese el ID correspondiente del Estacionamiento</small>
-                        <br></br>
+                        <label htmlFor="">Nombre Playa de Estacionamiento:</label>
+                        <SeleccionarEstacionamiento />
                     </div>
 
                     <div className="form-group">
                         <br></br>
                         <label htmlFor="">Dia de la Semana:</label>
-                        <input type="text" name="nombreDia" id="nombreDia" onChange={this.cambioValor} value={nombreDia} className={((this.verificarError("error_nombreDia")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
+                        <SeleccionarDiaSemana />
                     </div>
 
                     <div className="form-group">
