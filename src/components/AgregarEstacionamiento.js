@@ -75,7 +75,8 @@ class Listar extends React.Component {
                                                         <Link className="btn btn-warning" 
                                                         to={"/EditarEstacionamiento/"+estacionamiento.idPlayaDeEstacionamiento}                                                        
                                                         >Editar</Link>
-
+                                                        &nbsp;
+                                                        &nbsp;
                                                         <button type="button" className="btn btn-danger" 
                                                             onClick={()=> this.borrarRegistros(estacionamiento.idPlayaDeEstacionamiento)}>Borrar</button>
                                                     </div>

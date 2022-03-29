@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import apiHorarios from "../servicios/ApiHorarios";
+import SeleccionarDiaSemana from './SeleccionarDiaSemana';
+import SeleccionarEstacionamiento from './SeleccionarEstacionamiento';
+
 
 class Crear extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             idPlayaDeEstacionamiento: "",
-            diaSemana: "",
+            nombreDia: "",
             horaInicio: "",
             horaFin: "",
             errores: []
@@ -30,11 +33,11 @@ class Crear extends React.Component {
         e.preventDefault();
         console.log("Formulario enviado");
 
-        const { idPlayaDeEstacionamiento, diaSemana, horaInicio, horaFin } = this.state;
+        const { idPlayaDeEstacionamiento, nombreDia, horaInicio, horaFin } = this.state;
 
         var errores = [];
         if (!idPlayaDeEstacionamiento) errores.push("error_idPlayaDeEstacionamiento");
-        if (!diaSemana) errores.push("error_diaSemana");
+        if (!nombreDia) errores.push("error_nombreDia");
         if (!horaInicio) errores.push("error_horaInicio");
         if (!horaFin) errores.push("error_horaFin");
 
@@ -42,7 +45,7 @@ class Crear extends React.Component {
         if (errores.length > 0) {
             return false;
         }
-        var datosEnviar = { idPlayaDeEstacionamiento: idPlayaDeEstacionamiento, diaSemana: diaSemana, horaInicio: horaInicio, horaFin: horaFin }
+        var datosEnviar = { idPlayaDeEstacionamiento: idPlayaDeEstacionamiento, nombreDia: nombreDia, horaInicio: horaInicio, horaFin: horaFin }
 
         fetch(apiHorarios + "?insertar=1", {
             method: "POST",
@@ -50,9 +53,10 @@ class Crear extends React.Component {
 
         })
             .then(respuesta => respuesta.json())
-            .then((datosRespuesta) => {
-                console.log(datosRespuesta);
+            .then((data) => {
+                console.log(data.data);
                 this.props.history.push("/");
+                data.data === "ok" ? alert("Horario Agregado") : alert(data.data);
             })
             .catch(console.log)
     }
@@ -61,7 +65,7 @@ class Crear extends React.Component {
 
     render() {
 
-        const { idPlayaDeEstacionamiento, diaSemana, horaInicio, horaFin } = this.state;
+        const { idPlayaDeEstacionamiento, nombreDia, horaInicio, horaFin } = this.state;
 
         return (<div className="card">
             <div className="card-header">
@@ -70,18 +74,14 @@ class Crear extends React.Component {
             <div className="card-body">
                 <form onSubmit={this.enviarDatos} >
                     <div className="form-group">
-                        <label htmlFor="">ID Playa Estacionamiento:</label>
-                        <input type="text" name="idPlayaDeEstacionamiento" onChange={this.cambioValor} minLength={1} maxLength={50} value={idPlayaDeEstacionamiento} id="idPlayaDeEstacionamiento" className={((this.verificarError("error_idPlayaDeEstacionamiento")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
-                        <small id="helpId" className="text-muted">Ingrese el ID correspondiente del Estacionamiento</small>
-                        <br></br>
+                        <label htmlFor="">Nombre Playa de Estacionamiento:</label>
+                        <SeleccionarEstacionamiento />
                     </div>
 
                     <div className="form-group">
                         <br></br>
                         <label htmlFor="">Dia de la Semana:</label>
-                        <input type="number" name="diaSemana" id="diaSemana" onChange={this.cambioValor} pattern="[0-6]" size="1" min="0" max="6" value={diaSemana} className={((this.verificarError("error_diaSemana")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
-                        <small id="helpId" className="text-muted">1:Lunes  2:Martes  3:Miercoles  4:Jueves  5:Viernes  6:Sabado  0:Domingo</small>
-                        <br></br>
+                        <SeleccionarDiaSemana />
                     </div>
 
                     <div className="form-group">
