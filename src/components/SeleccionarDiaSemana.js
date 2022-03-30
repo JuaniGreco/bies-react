@@ -1,20 +1,20 @@
-import React from 'react';
-import Select from 'react-select';
-
-const options = [
-    { value: 'LUNES', label: 'Lunes' },
-    { value: 'MARTES', label: 'Martes' },
-    { value: 'MIERCOLES', label: 'Miercoles' },
-    { value: 'JUEVES', label: 'Jueves' },
-    { value: 'VIERNES', label: 'Viernes' },
-    { value: 'SABADO', label: 'Sabado' },
-    { value: 'DOMINGO', label: 'Domingo' }
-]
+import React from 'react'
 
 const SeleccionarDiaSemana = () => {
   return (
-    <Select options={options} placeholder = "Seleccione un dia"/>
+    <div>
+    <select required className="form-control" defaultValue="" onInvalid="">
+      <option name="default-option" value="" disabled selected hidden>Selecciona un dia</option>
+      <option value="LUNES">Lunes</option>
+      <option value="MARTES">Martes</option>
+      <option value="MIERCOLES">Miercoles</option>
+      <option value="JUEVES">Jueves</option>
+      <option value="VIERNES">Viernes</option>
+      <option value="SABADO">Sabado</option>
+      <option value="DOMINGO">Domingo</option>
+    </select>
+    </div>
   )
 }
 
-export default SeleccionarDiaSemana;
+export default SeleccionarDiaSemana
