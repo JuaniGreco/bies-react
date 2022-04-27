@@ -28,7 +28,6 @@ class ListaEstacionamiento extends React.Component {
                 <div className="container">
                     <Route exact path="/" render={(props) => <ListarEstacionamientos usuario={this.props.usuario} />}></Route>
                     <Route path="/VerEstacionamiento/:id" render={(props) => <VerEstacionamiento usuario={this.props.usuario} {...props}/>}></Route>
-                   
                 </div>
             </Router>
             

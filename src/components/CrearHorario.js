@@ -20,7 +20,7 @@ class Crear extends React.Component {
     cambioValor = (e) => {
         const state = this.state;
         state[e.target.name] = e.target.value;
-        this.setState({ state, errores: [] });
+        this.setState({ state });
     }
 
 
@@ -31,26 +31,29 @@ class Crear extends React.Component {
 
     enviarDatos = (e) => {
         e.preventDefault();
+        
         console.log("Formulario enviado");
-
+        console.log (this.state.idPlayaDeEstacionamiento);
         const { idPlayaDeEstacionamiento, nombreDia, horaInicio, horaFin } = this.state;
 
-        var errores = [];
-        if (!idPlayaDeEstacionamiento) errores.push("error_idPlayaDeEstacionamiento");
-        if (!nombreDia) errores.push("error_nombreDia");
-        if (!horaInicio) errores.push("error_horaInicio");
-        if (!horaFin) errores.push("error_horaFin");
+        // var errores = [];
+        // if (!idPlayaDeEstacionamiento) errores.push("error_idPlayaDeEstacionamiento");
+        // if (!nombreDia) errores.push("error_nombreDia");
+        // if (!horaInicio) errores.push("error_horaInicio");
+        // if (!horaFin) errores.push("error_horaFin");
 
-        this.setState({ errores: errores });
-        if (errores.length > 0) {
-            return false;
-        }
+        // this.setState({ errores: errores });
+        // if (errores.length > 0) {
+        //     return false;
+        // }
+
         var datosEnviar = { idPlayaDeEstacionamiento: idPlayaDeEstacionamiento, nombreDia: nombreDia, horaInicio: horaInicio, horaFin: horaFin }
+        console.log (datosEnviar);
+        
 
         fetch(apiHorarios + "?insertar=1", {
             method: "POST",
             body: JSON.stringify(datosEnviar)
-
         })
             .then(respuesta => respuesta.json())
             .then((data) => {
@@ -61,6 +64,15 @@ class Crear extends React.Component {
             .catch(console.log)
     }
 
+    onChange = (event) => {
+        this.setState({ idPlayaDeEstacionamiento: event.target.value });
+        console.log(event.target.value);
+    }
+
+    onChangeDia = (event) => {
+        this.setState({ nombreDia: event.target.value });
+        console.log(event.target.value);
+    }
 
 
     render() {
@@ -75,13 +87,13 @@ class Crear extends React.Component {
                 <form onSubmit={this.enviarDatos} >
                     <div className="form-group">
                         <label htmlFor="">Nombre Playa de Estacionamiento:</label>
-                        <SeleccionarEstacionamiento />
+                        <SeleccionarEstacionamiento onChange = {this.onChange}/>
                     </div>
 
                     <div className="form-group">
                         <br></br>
                         <label htmlFor="">Dia de la Semana:</label>
-                        <SeleccionarDiaSemana />
+                        <SeleccionarDiaSemana onChangeDia = {this.onChangeDia}/>
                     </div>
 
                     <div className="form-group">

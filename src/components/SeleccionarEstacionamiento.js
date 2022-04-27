@@ -6,7 +6,7 @@ export default class SeleccionarEstacionamiento extends React.Component {
         super()
         this.state = {
             collection: [],
-            value: '',
+            value: ''
         }
     }
     componentDidMount() {
@@ -14,16 +14,19 @@ export default class SeleccionarEstacionamiento extends React.Component {
             .then((response) => response.json())
             .then((res) => this.setState({ collection: res }))
     }
-    onChange = (event) => {
-        this.setState({ value: event.target.value })
-    }
+
+    // onChange = (event) => {
+    //     this.setState({ value: event.target.value });
+    // }
+    
+
     render() {
         return (
             <div>
                 <ListaDesplegableEstacionamiento
                     name={this.state.nombrePlayaDeEstacionamiento}
                     options={this.state.collection}
-                    onChange={this.onChange}
+                    onChange={this.props.onChange}
                 />
             </div>
         )
