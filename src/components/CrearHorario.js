@@ -36,16 +36,16 @@ class Crear extends React.Component {
         console.log (this.state.idPlayaDeEstacionamiento);
         const { idPlayaDeEstacionamiento, nombreDia, horaInicio, horaFin } = this.state;
 
-        // var errores = [];
-        // if (!idPlayaDeEstacionamiento) errores.push("error_idPlayaDeEstacionamiento");
-        // if (!nombreDia) errores.push("error_nombreDia");
-        // if (!horaInicio) errores.push("error_horaInicio");
-        // if (!horaFin) errores.push("error_horaFin");
+        var errores = [];
+        if (!idPlayaDeEstacionamiento) errores.push("error_idPlayaDeEstacionamiento");
+        if (!nombreDia) errores.push("error_nombreDia");
+        if (!horaInicio) errores.push("error_horaInicio");
+        if (!horaFin) errores.push("error_horaFin");
 
-        // this.setState({ errores: errores });
-        // if (errores.length > 0) {
-        //     return false;
-        // }
+        this.setState({ errores: errores });
+        if (errores.length > 0) {
+            return false;
+        }
 
         var datosEnviar = { idPlayaDeEstacionamiento: idPlayaDeEstacionamiento, nombreDia: nombreDia, horaInicio: horaInicio, horaFin: horaFin }
         console.log (datosEnviar);
