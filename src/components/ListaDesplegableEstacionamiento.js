@@ -9,7 +9,7 @@ export const ListaDesplegableEstacionamiento = (props) => (
             className="form-control"
             name="{props.nombrePlayaDeEstacionamiento}"
             onChange={props.onChange} defaultValue="">
-            <option name="default-option" value="" disabled selected hidden>Selecciona un estacionamiento</option>
+            <option name="default-option" value="" disabled hidden>Selecciona un estacionamiento</option>
             {props.options.map((item, idPlayaDeEstacionamiento) => (
                 
                 <option key={idPlayaDeEstacionamiento} value={item.idPlayaDeEstacionamiento} >

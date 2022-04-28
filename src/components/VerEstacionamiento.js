@@ -18,7 +18,6 @@ class VerEstacionamiento extends React.Component {
     
     cambioValor = (e) => {
         const state = this.state.estacionamiento;
-
         state[e.target.name] = e.target.value;
         this.setState({ estacionamiento: state });
     }
@@ -40,7 +39,7 @@ class VerEstacionamiento extends React.Component {
                 //console.log(datosRespuesta);
                 this.props.history.push("/");
             })
-            .catch(console.log)
+            //.catch(console.log)
     }
 
     componentDidMount() {

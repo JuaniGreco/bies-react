@@ -6,9 +6,9 @@ export default class SeleccionarDiaSemana extends React.Component {
     }
     render(){
         return(
-            <div>
-                <select required className="form-control" defaultValue="" onChange={this.props.onChangeDia}>
-                    <option value="">Seleccione un dia</option>
+            <div> 
+                <select required className="form-control" onChange={this.props.onChangeDia} defaultValue= "">
+                    <option value="" disabled hidden>Seleccione un dia</option>
                     <option value="Lunes">Lunes</option>
                     <option value="Martes">Martes</option>
                     <option value="Miercoles">Miercoles</option>
