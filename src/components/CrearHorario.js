@@ -77,7 +77,7 @@ class Crear extends React.Component {
 
     render() {
 
-        const { idPlayaDeEstacionamiento, nombreDia, horaInicio, horaFin } = this.state;
+        const { horaInicio, horaFin } = this.state;
 
         return (<div className="card">
             <div className="card-header">
