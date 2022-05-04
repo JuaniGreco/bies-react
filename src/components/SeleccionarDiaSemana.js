@@ -1,9 +1,6 @@
 import React from 'react'
 
 export default class SeleccionarDiaSemana extends React.Component {
-    constructor() {
-        super()
-    }
     render(){
         return(
             <div> 
