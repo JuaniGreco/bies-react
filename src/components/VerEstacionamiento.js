@@ -90,7 +90,7 @@ class VerEstacionamiento extends React.Component {
     }
 
     render() {
-        const { datosCargados, estacionamiento, playadeestacionamiento } = this.state
+        const { datosCargados, estacionamiento } = this.state
         if (!datosCargados) { return (<div>Cargando...</div>); }
         else {
 
@@ -118,16 +118,18 @@ class VerEstacionamiento extends React.Component {
                                     <td>{estacionamiento.observaciones}</td>
                                     <td>
                                         <div>
-                                            <a className="b_linkMapa" href={estacionamiento.mapa} target="_blank" rel="noreferrer">📍 Ubicación</a>{' '}
-
-                                            <button className="b_estacionar"
+                                        <a className="btn btn-primary" role="button" href={estacionamiento.mapa} target="_blank" rel="noreferrer">📍 Ubicación</a>{' '}
+                                        &nbsp;
+                                            <button type="button" className="btn btn-success btn"
                                                 onClick={() => this.estacionar(estacionamiento.idPlayaDeEstacionamiento, this.props.usuario.idUsuario)}>✔️Estacionar</button>
                                         </div>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <Link to={"/"} className="btn btn-success">Volver</Link>
+                        <div className="verEstacionamientoVolver">
+                        <Link to={"/"} className="btn btn-warning btn" style={{width: '110px', marginleft: '50%', color: 'white'}}>Volver</Link>
+                        </div>
                     </div>                    
                 </div>
 

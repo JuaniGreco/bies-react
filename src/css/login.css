@@ -1,38 +1,23 @@
-.b_linkMapa{
-    background-color: #4CAF50; /* Green */
+.verEstacionamientoVolver{
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 10px 120px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: inline-;
   font-size: 15px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-.b_estacionar{
-background-color: rgb(220, 56, 72); /* Green */
-border: none;
-color: white;
-padding: 10px 20px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-font-size: 15px;
-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 /* BASIC */
 
 html {
-    background-color: #7C0A02;
+    background-color: #3c3c42;
   }
   
   body {
     font-family: "Poppins", sans-serif;
     height: 100vh;
-    background: #7C0A02;
-     
+    background: #3c3c42;
 }  
   a {
     color: #92badd;

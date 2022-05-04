@@ -11,7 +11,7 @@ h1{
     table-layout: fixed;
   }
   .tbl-header{
-    background-color: rgba(255,255,255,0.3);
+    background-color: #1d1616cb;
     
    }
   .tbl-content{
@@ -101,7 +101,7 @@ h1{
         background-color: inherit;
     }
     tr td:first-child {
-        background: #ff5c5c;
+        background: #000000;
         font-weight:bold;
         font-size:1.3em;
     }

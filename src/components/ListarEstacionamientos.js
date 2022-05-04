@@ -100,7 +100,7 @@ class ListarEstacionamientos extends React.Component {
                                                 <td>{estacionamiento.observaciones}</td>
                                                 <td>
                                                     <div className="btn-group" role="group" aria-label="">
-                                                        <Link className="btn btn-warning"
+                                                        <Link className="btn btn-primary" style={{lineheight: '50px', width: '100px'}}
                                                             to={"/VerEstacionamiento/" + estacionamiento.idPlayaDeEstacionamiento}
                                                         >Ver</Link>
                                                     </div>
@@ -111,11 +111,9 @@ class ListarEstacionamientos extends React.Component {
                                 }
                             </tbody>
                         </table>
-
-
                     </div>
-                    <div className="card-footer text-muted">
-                        <button type="button" className="btn btn-danger"
+                    <div className="card-footer">
+                        <button type="button" className="btn btn-danger" style={{lineheight: '50px', width: '150px'}}
                             onClick={() => this.desestacionar(this.props.usuario.idUsuario)}>Desestacionar</button>
                     </div>
                 </div>
