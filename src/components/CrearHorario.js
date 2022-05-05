@@ -23,9 +23,7 @@ class Crear extends React.Component {
         this.setState({ state });
     }
 
-
     verificarError(elemento) {
-
         return this.state.errores.indexOf(elemento) !== -1;
     }
 

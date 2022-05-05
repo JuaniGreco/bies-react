@@ -8,7 +8,8 @@ class Editar extends React.Component {
         super(props);
         this.state = {
             datosCargados: false,
-            estacionamientohorario: []
+            estacionamientohorario: [],
+            errores: []
         }
     }
 
@@ -19,10 +20,20 @@ class Editar extends React.Component {
         this.setState({ estacionamientohorario: state });
     }
 
+    verificarError(elemento) {
+        return this.state.errores.indexOf(elemento) !== -1;
+    }
+
     enviarDatos = (e) => {
         e.preventDefault();
 
         const { idHorario, idPlayaDeEstacionamiento, nombreDia, horaInicio, horaFin } = this.state.estacionamientohorario;
+
+        var errores = [];
+        if (!idPlayaDeEstacionamiento) errores.push("error_idPlayaDeEstacionamiento");
+        if (!nombreDia) errores.push("error_nombreDia");
+        if (!horaInicio) errores.push("error_horaInicio");
+        if (!horaFin) errores.push("error_horaFin");
 
         var datosEnviar = { idHorario: idHorario, idPlayaDeEstacionamiento: idPlayaDeEstacionamiento, nombreDia: nombreDia, horaInicio: horaInicio, horaFin: horaFin }
 
