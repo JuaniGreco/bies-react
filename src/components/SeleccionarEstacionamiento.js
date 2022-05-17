@@ -27,6 +27,7 @@ export default class SeleccionarEstacionamiento extends React.Component {
                     name={this.state.nombrePlayaDeEstacionamiento}
                     options={this.state.collection}
                     onChange={this.props.onChange}
+                    value = {this.state.value}
                 />
             </div>
         )
