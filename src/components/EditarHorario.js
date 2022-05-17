@@ -60,6 +60,11 @@ class Editar extends React.Component {
         console.log(event.target.value);
     }
 
+    onChangeDia = (event) => {
+        this.setState({ nombreDia: event.target.value });
+        console.log(event.target.value);
+    }
+
     render() {
 
         const { datosCargados, estacionamientohorario } = this.state
@@ -92,7 +97,7 @@ class Editar extends React.Component {
                             <div className="form-group">
                                 <br></br>
                                 <label htmlFor="">Dia de la Semana:</label>
-                                <input type="text" name="nombreDia" id="nombreDia" onChange={this.cambioValor} minLength={1} maxLength={7} value={estacionamientohorario.nombreDia} className="form-control" placeholder="" aria-describedby="helpId" />
+                                <SeleccionarDiaSemana onChangeDia = {this.onChangeDia} value={estacionamientohorario.nombreDia} />
                             </div>
 
                             <div className="form-group">
