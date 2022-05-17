@@ -83,6 +83,11 @@ class Editar extends React.Component {
                                 <br></br>
                             </div>
 
+                            {/* <div className="form-group">
+                                <label htmlFor="">Nombre Playa de Estacionamiento:</label>
+                                <SeleccionarEstacionamiento onChange = {this.onChange}/>
+                            </div> */}
+
                             <div className="form-group">
                                 <br></br>
                                 <label htmlFor="">Dia de la Semana:</label>
