@@ -69,6 +69,7 @@ class Editar extends React.Component {
 
         const { datosCargados, estacionamientohorario } = this.state
         if (!datosCargados) { return (<div>Cargando...</div>); }
+        
         else {
 
             return (
@@ -97,7 +98,7 @@ class Editar extends React.Component {
                             <div className="form-group">
                                 <br></br>
                                 <label htmlFor="">Dia de la Semana:</label>
-                                <SeleccionarDiaSemana onChangeDia = {this.onChangeDia} value={estacionamientohorario.nombreDia} />
+                                <SeleccionarDiaSemana onChangeDia = {this.onChangeDia} nombreDia={estacionamientohorario.nombreDia}/>
                             </div>
 
                             <div className="form-group">
