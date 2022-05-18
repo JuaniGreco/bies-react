@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import apiHorarios from "../servicios/ApiHorarios";
-
+import SeleccionarDiaSemana from './SeleccionarDiaSemana';
+import SeleccionarEstacionamiento from './SeleccionarEstacionamiento';
 
 class Editar extends React.Component {
     constructor(props) {
@@ -54,10 +55,21 @@ class Editar extends React.Component {
             .catch(console.log)
     }
 
+    onChange = (event) => {
+        this.setState({ idPlayaDeEstacionamiento: event.target.value });
+        console.log(event.target.value);
+    }
+
+    onChangeDia = (event) => {
+        this.setState({ nombreDia: event.target.value });
+        console.log(event.target.value);
+    }
+
     render() {
 
         const { datosCargados, estacionamientohorario } = this.state
         if (!datosCargados) { return (<div>Cargando...</div>); }
+        
         else {
 
             return (
@@ -78,7 +90,7 @@ class Editar extends React.Component {
                         <form onSubmit={this.enviarDatos} >
                             <div className="form-group">
                                 <label htmlFor="">ID Playa de Estacionamiento:</label>
-                                <input type="text" name="idPlayaDeEstacionamiento" id="idPlayaDeEstacionamiento" onChange={this.cambioValor} value={estacionamientohorario.idPlayaDeEstacionamiento} className="form-control" placeholder="" aria-describedby="helpId" />
+                                <SeleccionarEstacionamiento onChange = {this.onChange} value={estacionamientohorario.idPlayaDeEstacionamiento}/>
                                 <small id="helpId" className="text-muted">Ingrese el ID correspondiente del Estacionamiento</small>
                                 <br></br>
                             </div>
@@ -91,7 +103,7 @@ class Editar extends React.Component {
                             <div className="form-group">
                                 <br></br>
                                 <label htmlFor="">Dia de la Semana:</label>
-                                <input type="text" name="nombreDia" id="nombreDia" onChange={this.cambioValor} minLength={1} maxLength={7} value={estacionamientohorario.nombreDia} className="form-control" placeholder="" aria-describedby="helpId" />
+                                <SeleccionarDiaSemana onChangeDia = {this.onChangeDia} nombreDia={estacionamientohorario.nombreDia}/>
                             </div>
 
                             <div className="form-group">
