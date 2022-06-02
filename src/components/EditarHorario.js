@@ -23,9 +23,9 @@ class Editar extends React.Component {
     enviarDatos = (e) => {
         e.preventDefault();
 
-        const { idHorario, idPlayaDeEstacionamiento, nombreDia, horaInicio, horaFin } = this.state.estacionamientohorario;
+        const { idHorario,nombrePlayaDeEstacionamiento, idPlayaDeEstacionamiento, nombreDia, horaInicio, horaFin } = this.state.estacionamientohorario;
 
-        var datosEnviar = { idHorario: idHorario, idPlayaDeEstacionamiento: idPlayaDeEstacionamiento, nombreDia: nombreDia, horaInicio: horaInicio, horaFin: horaFin }
+        var datosEnviar = { nombrePlayaDeEstacionamiento:nombrePlayaDeEstacionamiento ,idHorario: idHorario, idPlayaDeEstacionamiento: idPlayaDeEstacionamiento, nombreDia: nombreDia, horaInicio: horaInicio, horaFin: horaFin }
 
         fetch(apiHorarios + "?actualizar=1", {
             method: "POST",
@@ -81,17 +81,17 @@ class Editar extends React.Component {
 
 
                         <div className="form-group">
-                            <label htmlFor="">ID</label>
+                            <label htmlFor="">ID:</label>
                             <input type="text" readOnly className="form-control" value={estacionamientohorario.idHorario} id="idHorario" aria-describedby="helpId" placeholder="" />
                             <small id="helpId" className="form-text text-muted"></small>
                             <br></br>
                         </div>
 
                         <form onSubmit={this.enviarDatos} >
-                            <div className="form-group">
-                                <label htmlFor="">ID Playa de Estacionamiento:</label>
-                                <SeleccionarEstacionamiento onChange = {this.onChange} value={estacionamientohorario.idPlayaDeEstacionamiento}/>
-                                <small id="helpId" className="text-muted">Ingrese el ID correspondiente del Estacionamiento</small>
+                            <div className="form-group">   
+                            <label htmlFor="">Estacionamiento:</label>                             
+                            <input type="text" readOnly className="form-control" value={estacionamientohorario.nombrePlayaDeEstacionamiento} id="idHorario" aria-describedby="helpId" placeholder="" />
+                            
                                 <br></br>
                             </div>
 

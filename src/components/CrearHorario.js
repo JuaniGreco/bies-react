@@ -93,7 +93,7 @@ class Crear extends React.Component {
                     <div className="form-group">
                         <br></br>
                         <label htmlFor="">Dia de la Semana:</label>
-                        <SeleccionarDiaSemana onChangeDia = {this.onChangeDia} nombreDia = ""/>
+                        <SeleccionarDiaSemana onChangeDia = {this.onChangeDia} />
                     </div>
 
                     <div className="form-group">

@@ -96,7 +96,7 @@ class ListarEstacionamientos extends React.Component {
                                             <tr key={estacionamiento.idPlayaDeEstacionamiento}>
                                                 <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
                                                 <td>{estacionamiento.ubicacion}</td>
-                                                <td>{estacionamiento.lugaresLibres}</td>
+                                                <td>{estacionamiento.lugaresLibres} (lugares libres)</td>
                                                 <td>{estacionamiento.observaciones}</td>
                                                 <td>
                                                     <div className="btn-group" role="group" aria-label="">
