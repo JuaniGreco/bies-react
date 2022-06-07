@@ -96,13 +96,13 @@ class ListarEstacionamientos extends React.Component {
                                             <tr key={estacionamiento.idPlayaDeEstacionamiento}>
                                                 <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
                                                 <td>{estacionamiento.ubicacion}</td>
-                                                <td>{estacionamiento.lugaresLibres} (lugares libres)</td>
+                                                <td>{estacionamiento.lugaresLibres} lugares libres</td>
                                                 <td>{estacionamiento.observaciones}</td>
                                                 <td>
                                                     <div className="btn-group" role="group" aria-label="">
                                                         <Link className="btn btn-primary" style={{lineheight: '50px', width: '100px'}}
                                                             to={"/VerEstacionamiento/" + estacionamiento.idPlayaDeEstacionamiento}
-                                                        >Ver 📌</Link>
+                                                        >Ver 🗺️</Link>
                                                     </div>
                                                 </td>
                                             </tr>

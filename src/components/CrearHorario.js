@@ -57,9 +57,12 @@ class Crear extends React.Component {
         })
             .then(respuesta => respuesta.json())
             .then((data) => {
-                console.log(data.data);
-                this.props.history.push("/");
-                data.data === "ok" ? alert("Horario Agregado") : alert(data.data);
+                console.log(data.data);              
+              
+                if(data.data === "ok"){
+                    alert("Horario Agregado")
+                    this.props.history.push("/");
+                } else alert(data.data)
             })
             .catch(console.log)
     }

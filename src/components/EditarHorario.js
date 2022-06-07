@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import apiHorarios from "../servicios/ApiHorarios";
 import SeleccionarDiaSemana from './SeleccionarDiaSemana';
-import SeleccionarEstacionamiento from './SeleccionarEstacionamiento';
-
 class Editar extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor(props) {        
+        super(props);        
         this.state = {
             datosCargados: false,
-            estacionamientohorario: []
+            estacionamientohorario: []          
+            
+            
         }
     }
 
@@ -33,9 +33,13 @@ class Editar extends React.Component {
 
         })
             .then(respuesta => respuesta.json())
-            .then((datosRespuesta) => {
-                console.log(datosRespuesta);
-                this.props.history.push("/");
+            .then((data) => {
+                console.log(data.data);
+                
+                if(data.data === "ok"){
+                    alert("Horario Agregado")
+                    this.props.history.push("/");
+                } else alert(data.data)
             })
             .catch(console.log)
     }
@@ -55,14 +59,9 @@ class Editar extends React.Component {
             .catch(console.log)
     }
 
-    onChange = (event) => {
-        this.setState({ idPlayaDeEstacionamiento: event.target.value });
-        console.log(event.target.value);
-    }
-
-    onChangeDia = (event) => {
+    onChangeDia = (event) => {            
         this.setState({ nombreDia: event.target.value });
-        console.log(event.target.value);
+        console.log(event.target.value);        
     }
 
     render() {
