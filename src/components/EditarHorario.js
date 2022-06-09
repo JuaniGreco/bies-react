@@ -8,7 +8,7 @@ class Editar extends React.Component {
         this.handler = this.handler.bind(this);       
         this.state = {
             datosCargados: false,
-            nombreDia: "hola",
+            nombreDia: "",
             estacionamientohorario: []          
             
             
@@ -22,12 +22,18 @@ class Editar extends React.Component {
         this.setState({ estacionamientohorario: state });
     }
 
+    handler = (param) => {
+        this.setState({nombreDia: param})
+        console.log("Parametro: ",param);
+        this.nombreDia = param;
+    }
+
     enviarDatos = (e) => {
         e.preventDefault();
 
-        const { idHorario,nombrePlayaDeEstacionamiento, idPlayaDeEstacionamiento, nombreDia, horaInicio, horaFin } = this.state.estacionamientohorario;
-
-        var datosEnviar = { nombrePlayaDeEstacionamiento:nombrePlayaDeEstacionamiento ,idHorario: idHorario, idPlayaDeEstacionamiento: idPlayaDeEstacionamiento, nombreDia: nombreDia, horaInicio: horaInicio, horaFin: horaFin }
+        const { idHorario,nombrePlayaDeEstacionamiento, idPlayaDeEstacionamiento, horaInicio, horaFin } = this.state.estacionamientohorario;
+       
+        var datosEnviar = { nombrePlayaDeEstacionamiento:nombrePlayaDeEstacionamiento ,idHorario: idHorario, idPlayaDeEstacionamiento: idPlayaDeEstacionamiento, nombreDia: this.nombreDia, horaInicio: horaInicio, horaFin: horaFin }
 
         fetch(apiHorarios + "?actualizar=1", {
             method: "POST",
@@ -61,10 +67,7 @@ class Editar extends React.Component {
             .catch(console.log)
     }
 
-    handler = (param) => {
-        this.setState({nombreDia: param})
-        console.log("Parametro: ",param);
-    }
+
  
 
     render() {     
