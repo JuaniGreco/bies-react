@@ -62,17 +62,10 @@ class Editar extends React.Component {
     }
 
     handler = (param) => {
-        this.setState({
-            nombreDia: param
-          })
-          console.log("nombreDiaHAndleredit:",param);
-          console.log("nombrediaFinal",this.nombreDia)
+        this.setState({nombreDia: param})
+        console.log("Parametro: ",param);
     }
-
-
-
-
-   
+ 
 
     render() {     
 

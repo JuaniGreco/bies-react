@@ -69,20 +69,16 @@ class Crear extends React.Component {
 
     onChange = (event) => {
         this.setState({ idPlayaDeEstacionamiento: event.target.value });
-        console.log(event.target.value);
     }
 
     handler = (param) => {
-        this.setState({
-          nombreDia: param
-        })
-        console.log("nombreDiaHAndler:",param);
-      }
+        this.setState({nombreDia: param})
+    }
 
 
     render() {
 
-        const { horaInicio, horaFin } = this.state;
+        const { horaInicio, horaFin, nombreDia } = this.state;
 
         return (<div className="card">
             <div className="card-header">
@@ -98,7 +94,7 @@ class Crear extends React.Component {
                     <div className="form-group">
                         <br></br>
                         <label htmlFor="">Dia de la Semana:</label>
-                        <SeleccionarDiaSemana nombreDia={this.nombreDia} handler={this.handler}/>
+                        <SeleccionarDiaSemana nombreDia={nombreDia} handler={this.handler}/>
                     </div>
 
                     <div className="form-group">
