@@ -5,20 +5,17 @@ export default function SeleccionarDiaSemana (props) {
     const [dia, setDia] = React.useState(props.nombreDia);
     const estadoDia=(event)=>{
         setDia(event.target.value)
-        console.log(event.target.value)       
+        console.log(event.target.value)   
+        props.handler(event.target.value)    
         
     }    
-
-    const someMethod = () => {
-        props.handler(dia)
-    }
 
     console.log("DIA NUEVO",dia)
     
     
     return( 
         <div> 
-                <select required className="form-control" defaultValue={dia} onClick={someMethod} onChange={estadoDia} > 
+                <select required className="form-control" defaultValue={dia} onChange={estadoDia} > 
                 <option name="default-option" value="" hidden>Selecciona un día</option>
                     <option value="LUNES">Lunes</option>
                     <option value="MARTES">Martes</option>

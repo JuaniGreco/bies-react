@@ -72,11 +72,6 @@ class Crear extends React.Component {
         console.log(event.target.value);
     }
 
-    onChangeDia = (event) => {
-        this.setState({ nombreDia: event.target.value });
-        console.log(event.target.value);
-    }
-
     handler = (param) => {
         this.setState({
           nombreDia: param

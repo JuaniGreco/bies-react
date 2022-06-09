@@ -4,9 +4,11 @@ import apiHorarios from "../servicios/ApiHorarios";
 import SeleccionarDiaSemana from './SeleccionarDiaSemana';
 class Editar extends React.Component {
     constructor(props) {        
-        super(props);        
+        super(props); 
+        this.handler = this.handler.bind(this);       
         this.state = {
             datosCargados: false,
+            nombreDia: "hola",
             estacionamientohorario: []          
             
             
@@ -59,11 +61,20 @@ class Editar extends React.Component {
             .catch(console.log)
     }
 
+    handler = (param) => {
+        this.setState({
+            nombreDia: param
+          })
+          console.log("nombreDiaHAndleredit:",param);
+          console.log("nombrediaFinal",this.nombreDia)
+    }
+
+
 
 
    
 
-    render() {
+    render() {     
 
         const { datosCargados, estacionamientohorario } = this.state
         if (!datosCargados) { return (<div>Cargando...</div>); }
@@ -101,7 +112,7 @@ class Editar extends React.Component {
                             <div className="form-group">
                                 <br></br>
                                 <label htmlFor="">Dia de la Semana:</label>
-                                <SeleccionarDiaSemana nombreDia={estacionamientohorario.nombreDia}/>
+                                <SeleccionarDiaSemana nombreDia={estacionamientohorario.nombreDia} handler={this.handler}/>
                             </div>
 
                             <div className="form-group">
