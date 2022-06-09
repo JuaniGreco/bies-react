@@ -59,10 +59,9 @@ class Editar extends React.Component {
             .catch(console.log)
     }
 
-    onChangeDia = (event) => {            
-        this.setState({ nombreDia: event.target.value });
-        console.log(event.target.value);        
-    }
+
+
+   
 
     render() {
 
@@ -102,7 +101,7 @@ class Editar extends React.Component {
                             <div className="form-group">
                                 <br></br>
                                 <label htmlFor="">Dia de la Semana:</label>
-                                <SeleccionarDiaSemana onChangeDia = {this.onChangeDia} nombreDia={estacionamientohorario.nombreDia}/>
+                                <SeleccionarDiaSemana nombreDia={estacionamientohorario.nombreDia}/>
                             </div>
 
                             <div className="form-group">

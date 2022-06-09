@@ -77,6 +77,13 @@ class Crear extends React.Component {
         console.log(event.target.value);
     }
 
+    handler = (param) => {
+        this.setState({
+          nombreDia: param
+        })
+        console.log("nombreDiaHAndler:",param);
+      }
+
 
     render() {
 
@@ -96,7 +103,7 @@ class Crear extends React.Component {
                     <div className="form-group">
                         <br></br>
                         <label htmlFor="">Dia de la Semana:</label>
-                        <SeleccionarDiaSemana onChangeDia = {this.onChangeDia} />
+                        <SeleccionarDiaSemana nombreDia={this.nombreDia} handler={this.handler}/>
                     </div>
 
                     <div className="form-group">

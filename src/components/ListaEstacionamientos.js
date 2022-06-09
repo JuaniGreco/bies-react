@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import { Route, BrowserRouter as Router, Redirect} from "react-router-dom";
 import { Link } from "react-router-dom";
 import VerEstacionamiento from "./VerEstacionamiento";
 import '../css/login.css';
@@ -27,9 +27,11 @@ class ListaEstacionamiento extends React.Component {
                 </nav> */}
                 <NavBar />
 
+
                 <div className="container">
                     <Route exact path="/" render={(props) => <ListarEstacionamientos usuario={this.props.usuario} />}></Route>
                     <Route path="/VerEstacionamiento/:id" render={(props) => <VerEstacionamiento usuario={this.props.usuario} {...props}/>}></Route>
+                    <Route path="/*" render={() => <Redirect to="/" />}></Route>
                 </div>
             </Router>
             
