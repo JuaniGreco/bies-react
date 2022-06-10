@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import '../css/login.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import CrearUsuario from './CrearUsuario';
-import logo from '../imagenes/B-IES.ico'
+import logo from '../imagenes/B-IES.ico';
 
 
 const URL_LOGIN = "http://localhost/bies-react/login.php";
@@ -38,9 +38,12 @@ export default function Login(props) {
             "dni": refDni.current.value,
             "clave": refClave.current.value
         };
-        console.log(data);
+        
         const respuestaJson = await enviarData(URL_LOGIN, data);
-        console.log("respuesta", respuestaJson);
+        
+
+
+        if (respuestaJson.error) {alert("Datos incorrectos");}
 
         props.acceder(respuestaJson) //obtengo el idRol del usuario
     }
@@ -73,6 +76,7 @@ export default function Login(props) {
                             aria-describedby="basic-addon1"
                             ref={refDni}
                         />
+                        
                     </div>
 
                     <div>
@@ -103,8 +107,10 @@ export default function Login(props) {
                     <div>
                         <Router>
                             <Route exact path="/CrearUsuario" component={CrearUsuario}></Route>
-                            <a className="underlineHover" href="/CrearUsuario">Crear Usuario</a>
+                            <a className="underlineHover" href="/CrearUsuario">Crear Usuario</a>                            
                         </Router>
+
+                        
                     </div>
                 </div>
             </div>

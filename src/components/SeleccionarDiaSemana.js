@@ -1,12 +1,11 @@
-import React,{useState} from 'react'
+import React from 'react'
 
 export default function SeleccionarDiaSemana (props) {
 
 
     const estadoDia=(event)=>{ 
         props.handler(event.target.value)   
-    } 
-    
+    }     
     
     return( 
         <div> 

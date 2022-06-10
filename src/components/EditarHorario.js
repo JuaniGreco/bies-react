@@ -9,9 +9,7 @@ class Editar extends React.Component {
         this.state = {
             datosCargados: false,
             nombreDia: "",
-            estacionamientohorario: []          
-            
-            
+            estacionamientohorario: []            
         }
     }
 
@@ -45,7 +43,7 @@ class Editar extends React.Component {
                 console.log(data.data);
                 
                 if(data.data === "ok"){
-                    alert("Horario Agregado")
+                    alert("Horario actualizado")
                     this.props.history.push("/");
                 } else alert(data.data)
             })
