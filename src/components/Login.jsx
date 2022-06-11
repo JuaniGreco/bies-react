@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef} from 'react';
 import '../css/login.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import CrearUsuario from './CrearUsuario';
 import logo from '../imagenes/B-IES.ico';
 import Modal from './Modal';
-import useModal from '../hooks/useModal';
+
 
 
 const URL_LOGIN = "http://localhost/bies-react/login.php";
@@ -32,12 +32,14 @@ const enviarData = async (url, data) => {
 
 export default function Login(props) {
 
+   
+
     const refDni = useRef(null);
-    const refClave = useRef(null);
+    const refClave = useRef(null); 
 
-    const [isOpenLoginModal, openLoginModal, closeLoginModal] = useModal();
+    const [active, setActive] = React.useState(false);
 
-
+    const toggle = () => setActive(!active);
 
     const handleLogin = async () => {
         const data = {
@@ -51,7 +53,7 @@ export default function Login(props) {
 
 
         if (respuestaJson.error) {
-            openLoginModal();
+            toggle();
         }
 
 
@@ -69,11 +71,11 @@ export default function Login(props) {
 
         <div className="wrapper fadeInDown">
 
-            <Modal
-                isOpen={isOpenLoginModal}
-                closeModal={closeLoginModal}
-                title="Mensaje"
-                mensaje="Usuario o clave incorrectos"
+            <Modal 
+                active={active} 
+                toggle={toggle}
+                titulo= "Datos incorrectos"
+                mensaje= "Por favor, verifique su DNI y contraseña"
             >
 
             </Modal>

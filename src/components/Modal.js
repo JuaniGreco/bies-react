@@ -1,30 +1,38 @@
 import React from 'react'
 import './Modal.css'
+import Portal from './Portal'
 
-const Modal = ({ isOpen, closeModal, title, mensaje }) => {
+export default class Modal extends React.Component {
 
-    const handleModalDialogClick = (e) => {
-        e.stopPropagation();
+    render() {
+
+        const handleModalDialogClick = (e) => {
+            e.stopPropagation();
+        }    
+
+        const { titulo, mensaje, toggle, active } = this.props;
+
+        return (
+            <Portal>
+                {active && (
+                <div className={`modal ${active && 'modal-open'}`} tabIndex="-1" role="dialog">
+                    <div className="modal-dialog" role="document" onClick={handleModalDialogClick}>
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title">{titulo}</h5>
+                                </div>
+                                <div className="modal-body"> 
+                                    <p className="mensaje" >{mensaje}</p>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-primary" onClick={toggle}>Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+            </Portal>
+        )
     }
-
-    return (
-        <div className={`modal ${isOpen && 'modal-open'}`} onClick={closeModal} tabIndex="-1" role="dialog">
-            <div className="modal-dialog" role="document" onClick={handleModalDialogClick}>
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title">{title}</h5>
-                    </div>
-                    <div className="modal-body">
-                        <p>{mensaje}</p>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-primary" onClick={closeModal} >Aceptar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
 }
-
-export default Modal
-
