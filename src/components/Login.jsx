@@ -3,6 +3,8 @@ import '../css/login.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import CrearUsuario from './CrearUsuario';
 import logo from '../imagenes/B-IES.ico';
+import Modal from './Modal';
+import useModal from '../hooks/useModal';
 
 
 const URL_LOGIN = "http://localhost/bies-react/login.php";
@@ -33,30 +35,49 @@ export default function Login(props) {
     const refDni = useRef(null);
     const refClave = useRef(null);
 
+    const [isOpenLoginModal, openLoginModal, closeLoginModal] = useModal();
+
+
+
     const handleLogin = async () => {
         const data = {
             "dni": refDni.current.value,
             "clave": refClave.current.value
         };
-        
+
         const respuestaJson = await enviarData(URL_LOGIN, data);
-        
-
-
-        if (respuestaJson.error) {alert("Datos incorrectos");}
 
         props.acceder(respuestaJson) //obtengo el idRol del usuario
+
+
+        if (respuestaJson.error) {
+            openLoginModal();
+        }
+
+
     }
 
     const handleKeyDown = (e) => {
-        if(e.keyCode === 13){
+        if (e.keyCode === 13) {
             handleLogin();
         }
     }
 
     return (
-        
+
+
+
         <div className="wrapper fadeInDown">
+
+            <Modal
+                isOpen={isOpenLoginModal}
+                closeModal={closeLoginModal}
+                title="Mensaje"
+                mensaje="Usuario o clave incorrectos"
+            >
+
+            </Modal>
+
             <div id="formContent">
 
                 <div className="fadeIn first">
@@ -76,7 +97,7 @@ export default function Login(props) {
                             aria-describedby="basic-addon1"
                             ref={refDni}
                         />
-                        
+
                     </div>
 
                     <div>
@@ -90,7 +111,7 @@ export default function Login(props) {
                             aria-label="password"
                             aria-describedby="basic-addon2"
                             ref={refClave}
-                            onKeyDown = {handleKeyDown}
+                            onKeyDown={handleKeyDown}
                         />
                     </div>
                     <br></br>
@@ -100,17 +121,18 @@ export default function Login(props) {
                             className="btn btn-outline-primary">
                             Iniciar sesión</button>
 
+
                     </div>
 
-                    
+
 
                     <div>
                         <Router>
                             <Route exact path="/CrearUsuario" component={CrearUsuario}></Route>
-                            <a className="underlineHover" href="/CrearUsuario">Crear Usuario</a>                            
+                            <a className="underlineHover" href="/CrearUsuario">Crear Usuario</a>
                         </Router>
 
-                        
+
                     </div>
                 </div>
             </div>
