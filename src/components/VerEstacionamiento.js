@@ -65,10 +65,11 @@ class VerEstacionamiento extends React.Component {
 
                     console.log(data.data);
                     this.cargarDatos();
-                    data.data === "estacionado" ? (alert("Te has estacionado"))
+                    data.data === "estacionado" ? (alert("Te has estacionado") )
                         : data.data === "ya_estacionado" ? (alert("Ya estabas estacionado con anterioridad, desestacione y vuelva a intentar"))
                             : (alert("El estacionamiento se encuentra cerrado"));
                     console.log(data.data);
+                    this.props.history.push("/")
                 }))
             .catch(console.log)
         //alert('Usted se ha estacionado.');
