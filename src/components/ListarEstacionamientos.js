@@ -56,6 +56,7 @@ class ListarEstacionamientos extends React.Component {
             .then(data => {
                 console.log(data.data);
                 this.cargarDatosUsuarios();
+                this.cargarDatos()
                 data.data === "desestacionado" ? (alert("Usted ha dejado el estacionamiento.")) : (alert("No se pudo desestacionar porque no estaba estacionado"));
             }))
             .then(response => response.json())
