@@ -12,7 +12,7 @@ function App() {
     setUsuario(estado)
   }
 
-  console.log("IDUSUARIOLOG: ", usuario);
+  //console.log("IDUSUARIOLOG: ", usuario);
 
   const project = () => {
     switch (usuario.idRol) {

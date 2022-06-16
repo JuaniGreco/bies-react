@@ -22,14 +22,14 @@ class Editar extends React.Component {
     enviarDatos = (e) => {
         e.preventDefault();
         console.log("Formulario enviado");
-        const { idPlayaDeEstacionamiento, nombrePlayaDeEstacionamiento, ubicacion, capacidad, observaciones, mapa, lugaresLibres } = this.state.estacionamiento;
-        console.log(idPlayaDeEstacionamiento);
+        const { idPlayaDeEstacionamiento, nombrePlayaDeEstacionamiento, ubicacion, capacidad, observaciones, mapa} = this.state.estacionamiento;
+        /*console.log(idPlayaDeEstacionamiento);
         console.log(nombrePlayaDeEstacionamiento);
         console.log(ubicacion);
         console.log(capacidad);
         console.log(observaciones);
         console.log(mapa);
-        console.log(lugaresLibres);
+        console.log(lugaresLibres);*/
 
         var datosEnviar = { idPlayaDeEstacionamiento: idPlayaDeEstacionamiento, nombrePlayaDeEstacionamiento: nombrePlayaDeEstacionamiento, ubicacion: ubicacion, capacidad: capacidad, observaciones: observaciones, mapa: mapa, lugaresLibres: capacidad };
 
@@ -40,19 +40,19 @@ class Editar extends React.Component {
         })
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
-                console.log(datosRespuesta);
+                //console.log(datosRespuesta);
                 this.props.history.push("/");
             })
             .catch(console.log)
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.id);
+        //console.log(this.props.match.params.id);
 
         fetch(Api + "?consultar=" + this.props.match.params.id)
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
-                console.log(datosRespuesta);
+                //console.log(datosRespuesta);
                 this.setState({
                     datosCargados: true,
                     estacionamiento: datosRespuesta[0]

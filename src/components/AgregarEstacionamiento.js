@@ -14,11 +14,11 @@ class Listar extends React.Component {
     }
 
     borrarRegistros = (idPlayaDeEstacionamiento) => {
-        console.log(idPlayaDeEstacionamiento);
+        //console.log(idPlayaDeEstacionamiento);
         fetch(Api+"?borrar="+idPlayaDeEstacionamiento)
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
-                console.log(datosRespuesta);
+                //console.log(datosRespuesta);
                 this.cargarDatos();
             })
             .catch(console.log)
@@ -28,7 +28,7 @@ class Listar extends React.Component {
         fetch(Api)
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
-                console.log(datosRespuesta);
+                //console.log(datosRespuesta);
                 this.setState({ datosCargados: true, playadeestacionamiento: datosRespuesta })
             })
             .catch(console.log)

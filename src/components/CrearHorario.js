@@ -33,7 +33,7 @@ class Crear extends React.Component {
         e.preventDefault();
         
         console.log("Formulario enviado");
-        console.log (this.state.idPlayaDeEstacionamiento);
+        //console.log (this.state.idPlayaDeEstacionamiento);
         const { idPlayaDeEstacionamiento, nombreDia, horaInicio, horaFin } = this.state;
 
         var errores = [];
@@ -48,7 +48,7 @@ class Crear extends React.Component {
         }
 
         var datosEnviar = { idPlayaDeEstacionamiento: idPlayaDeEstacionamiento, nombreDia: nombreDia, horaInicio: horaInicio, horaFin: horaFin }
-        console.log (datosEnviar);
+        //console.log (datosEnviar);
         
 
         fetch(apiHorarios + "?insertar=1", {
@@ -57,8 +57,8 @@ class Crear extends React.Component {
         })
             .then(respuesta => respuesta.json())
             .then((data) => {
-                console.log(data.data);              
-              
+                //console.log(data.data);              
+            
                 if(data.data === "ok"){
                     alert("Horario agregado")
                     this.props.history.push("/");

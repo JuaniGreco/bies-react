@@ -22,7 +22,7 @@ class Editar extends React.Component {
 
     handler = (param) => {
         this.setState({nombreDia: param})
-        console.log("Parametro: ",param);
+        //console.log("Parametro: ",param);
         this.nombreDia = param;
     }
 
@@ -40,7 +40,7 @@ class Editar extends React.Component {
         })
             .then(respuesta => respuesta.json())
             .then((data) => {
-                console.log(data.data);
+                //console.log(data.data);
                 
                 if(data.data === "ok"){
                     alert("Horario actualizado")
@@ -51,12 +51,12 @@ class Editar extends React.Component {
     }
 
     componentDidMount() {
-        console.log("Respuesta ID:", this.props.match.params.id);
+        //console.log("Respuesta ID:", this.props.match.params.id);
 
         fetch(apiHorarios + "?consultar=" + this.props.match.params.id)
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
-                console.log(datosRespuesta);
+                //console.log(datosRespuesta);
                 this.setState({
                     datosCargados: true,
                     estacionamientohorario: datosRespuesta[0]

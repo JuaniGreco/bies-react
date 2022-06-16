@@ -32,11 +32,11 @@ class Crear extends React.Component {
         console.log("Formulario enviado");
 
         const { nombrePlayaDeEstacionamiento, ubicacion, capacidad, observaciones, mapa } = this.state;
-        console.log(nombrePlayaDeEstacionamiento);
-        console.log(ubicacion);
-        console.log(capacidad);
-        console.log(observaciones);
-        console.log(mapa);
+        //console.log(nombrePlayaDeEstacionamiento);
+        //console.log(ubicacion);
+        //console.log(capacidad);
+        //console.log(observaciones);
+        //console.log(mapa);
 
         var errores = [];
         if (!nombrePlayaDeEstacionamiento) errores.push("error_nombrePlayaDeEstacionamiento");
@@ -58,7 +58,8 @@ class Crear extends React.Component {
         })
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
-                console.log(datosRespuesta);
+                //console.log(datosRespuesta);
+                alert ("Estacionamiento agregado");
                 this.props.history.push("/");
             })
             .catch(console.log)
@@ -92,7 +93,7 @@ class Crear extends React.Component {
 
                     <div className="form-group">
                         <label htmlFor="">Capacidad:</label>
-                        <input type="text" name="capacidad" id="capacidad" onChange={this.cambioValor} maxLength={3} value={capacidad} className={((this.verificarError("error_capacidad")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
+                        <input type="number" name="capacidad" id="capacidad" onChange={this.cambioValor} maxLength={3} value={capacidad} className={((this.verificarError("error_capacidad")) ? "is-invalid" : "") + " form-control"} placeholder="" aria-describedby="helpId" />
                         <small id="helpId" className="invalid-feedback">Ingrese Capacidad</small>
                         <br></br>
                     </div>

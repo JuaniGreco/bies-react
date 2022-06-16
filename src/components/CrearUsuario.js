@@ -31,7 +31,7 @@ class CrearUsuario extends React.Component {
         console.log("Formulario enviado");
 
         const { nombre, dni, clave, email } = this.state;
-        console.log(nombre, dni, clave, email);
+        //console.log(nombre, dni, clave, email);
 
         var errores = [];
         if (!nombre) errores.push("error_nombre");
@@ -44,7 +44,7 @@ class CrearUsuario extends React.Component {
             return false;
         }
         var datosEnviar = { nombre: nombre, dni: dni, clave: clave, email: email };
-        console.log(datosEnviar);
+        //console.log(datosEnviar);
 
         fetch(apiCrearUsuario + "?insertar=1", {
             method: "POST",
@@ -53,7 +53,7 @@ class CrearUsuario extends React.Component {
         })
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
-                console.log(datosRespuesta);
+                //console.log(datosRespuesta);
                 this.props.history.push("/");
             })
             .catch(console.log)
@@ -95,7 +95,7 @@ class CrearUsuario extends React.Component {
                         <span className="fadeIn third" id="basic-addon2">
                             🔒 
                         </span>
-                            <input type="password" name="clave" id="clave" onChange={this.cambioValor} maxLength={20} value={clave} className={((this.verificarError("error_clave")) ? "is-invalid" : "") + " form-control"} placeholder="Ingrese Clave" aria-describedby="helpId" />
+                            <input type="password" name="clave" id="clave" onChange={this.cambioValor} maxLength={20} minLength={6} value={clave} className={((this.verificarError("error_clave")) ? "is-invalid" : "") + " form-control"} placeholder="Ingrese Clave" aria-describedby="helpId" />
                             <small id="helpId" className="invalid-feedback">Ingrese clave</small>
                             <br></br>
                         </div>
@@ -104,7 +104,7 @@ class CrearUsuario extends React.Component {
                         <span className="fadeIn third" id="basic-addon2">
                             📧 
                         </span>
-                            <input type="text_diseño" name="email" id="email" onChange={this.cambioValor} maxLength={60} value={email} className={((this.verificarError("error_email")) ? "is-invalid" : "") + " form-control"} placeholder="Ingrese Email" aria-describedby="helpId" />
+                            <input type="email" name="email" id="email" onChange={this.cambioValor} maxLength={60} value={email} className={((this.verificarError("error_email")) ? "is-invalid" : "") + " form-control"} placeholder="Ingrese Email" aria-describedby="helpId" />
                             <small id="helpId" className="invalid-feedback">Ingrese email</small>
                             <br></br>
                         </div>

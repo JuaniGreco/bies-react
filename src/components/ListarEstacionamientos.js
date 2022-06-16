@@ -21,7 +21,7 @@ class ListarEstacionamientos extends React.Component {
         fetch(Api)
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
-                console.log(datosRespuesta);
+                //console.log(datosRespuesta);
                 this.setState({ datosCargados: true, playadeestacionamiento: datosRespuesta })
             })
             .catch(console.log)
@@ -54,7 +54,7 @@ class ListarEstacionamientos extends React.Component {
             fetch(ApiEstacionar + "?desestacionar&idUsuario=" + idUsuario)
             .then(response => response.json()
             .then(data => {
-                console.log(data.data);
+                //console.log(data.data);
                 this.cargarDatosUsuarios();
                 this.cargarDatos()
                 data.data === "desestacionado" ? (alert("Usted ha dejado el estacionamiento.")) : (alert("No se pudo desestacionar porque no estaba estacionado"));
@@ -67,7 +67,7 @@ class ListarEstacionamientos extends React.Component {
 
     render() {
 
-        console.log("PROPS: ",this.props);
+        //console.log("PROPS: ",this.props);
 
         const { datosCargados, playadeestacionamiento } = this.state
         const { datosCargadosUsuarios } = this.state

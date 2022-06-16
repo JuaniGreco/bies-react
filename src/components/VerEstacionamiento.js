@@ -38,7 +38,7 @@ class VerEstacionamiento extends React.Component {
         })
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
-                console.log(datosRespuesta);
+                //console.log(datosRespuesta);
                 this.props.history.push("/");
             })
             .catch(console.log)
@@ -48,7 +48,7 @@ class VerEstacionamiento extends React.Component {
         fetch(Api + "?consultar=" + this.props.match.params.id)
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
-                console.log(datosRespuesta);
+                //console.log(datosRespuesta);
                 this.setState({
                     datosCargados: true,
                     estacionamiento: datosRespuesta[0]
@@ -58,18 +58,19 @@ class VerEstacionamiento extends React.Component {
     }
 
     estacionar = (idPlayaDeEstacionamiento, idUsuario) => {
-        console.log("IdUSUARIO:", idUsuario);
+        //console.log("IdUSUARIO:", idUsuario);
         fetch(ApiEstacionar + "?estacionar=" + idPlayaDeEstacionamiento + "&idUsuario=" + idUsuario)
+            .catch(console.log)
             .then(response => response.json()
                 .then(data => {
-
-                    console.log(data.data);
+                    //console.log(data.data);
                     this.cargarDatos();
                     data.data === "estacionado" ? (alert("Te has estacionado") )
                         : data.data === "ya_estacionado" ? (alert("Ya estabas estacionado con anterioridad, desestacione y vuelva a intentar"))
                             : (alert("El estacionamiento se encuentra cerrado"));
-                    console.log(data.data);
+                    //console.log(data.data);
                     this.props.history.push("/")
+                    //.catch(console.log)
                 }))
             .catch(console.log)
         //alert('Usted se ha estacionado.');
@@ -82,8 +83,9 @@ class VerEstacionamiento extends React.Component {
         fetch(Api)
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
-                console.log(datosRespuesta);
+                //console.log(datosRespuesta);
                 this.setState({ datosCargados: true, playadeestacionamiento: datosRespuesta, estacionado: true });
+                
             })
             .catch(console.log)
 
