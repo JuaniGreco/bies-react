@@ -115,7 +115,7 @@ class VerEstacionamiento extends React.Component {
                                 <tr>
                                     <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
                                     <td>{estacionamiento.ubicacion}</td>
-                                    <td>{estacionamiento.lugaresLibres} lugares libres</td>
+                                    <td>Lugares libres: {estacionamiento.lugaresLibres}</td>
                                     <td>{estacionamiento.observaciones}</td>
                                     <td>
                                         <div>
