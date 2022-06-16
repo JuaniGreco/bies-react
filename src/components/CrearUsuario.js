@@ -77,7 +77,7 @@ class CrearUsuario extends React.Component {
                         <span className="fadeIn third" id="basic-addon2">
                             🗨️
                         </span>
-                            <input type="text_diseño" name="nombre" onChange={this.cambioValor} minLength={6} maxLength={50} value={nombre} id="nombre" className={((this.verificarError("error_nombre")) ? "is-invalid" : "") + " form-control"} placeholder="Ingrese Nombre" aria-describedby="helpId" />
+                            <input type="text_diseño" name="nombre" onChange={this.cambioValor} minLength={6} maxLength={50} value={nombre} id="nombre" className={((this.verificarError("error_nombre")) ? "is-invalid" : "") + " form-control"} placeholder="Ingrese Nombre y Apellido" aria-describedby="helpId" />
                             <small id="helpId" className="invalid-feedback">Ingrese nombre y apellido</small>
                             <br></br>
                         </div>
