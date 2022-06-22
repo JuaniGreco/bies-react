@@ -3,7 +3,7 @@ import '../css/login.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import CrearUsuario from './CrearUsuario';
 import logo from '../imagenes/B-IES.ico';
-import Modal from './Modal';
+import swal from "sweetalert";
 
 
 
@@ -37,10 +37,6 @@ export default function Login(props) {
     const refDni = useRef(null);
     const refClave = useRef(null); 
 
-    const [active, setActive] = React.useState(false);
-
-    const toggle = () => setActive(!active);
-
     const handleLogin = async () => {
         const data = {
             "dni": refDni.current.value,
@@ -53,7 +49,12 @@ export default function Login(props) {
 
 
         if (respuestaJson.error) {
-            toggle();
+            swal({
+                title: "Error en el ingreso",
+                text: "Verifique el usuario o la contraseña.",
+                icon: "error",
+                buttons: "Aceptar"
+            });
         }
 
 
@@ -70,15 +71,6 @@ export default function Login(props) {
 
 
         <div className="wrapper fadeInDown">
-
-            <Modal 
-                active={active} 
-                toggle={toggle}
-                titulo= "Datos incorrectos"
-                mensaje= "Por favor, verifique su DNI y contraseña"
-            >
-
-            </Modal>
 
             <div id="formContent">
 

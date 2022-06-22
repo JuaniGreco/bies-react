@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import Api from "../servicios/Api";
+import swal from "sweetalert";
 
 class Crear extends React.Component {
     constructor(props) {
@@ -59,7 +60,12 @@ class Crear extends React.Component {
             .then(respuesta => respuesta.json())
             .then((datosRespuesta) => {
                 //console.log(datosRespuesta);
-                alert ("Estacionamiento agregado");
+                swal({   
+                    title:"Estacionamiento agregado",                         
+                    text: "Se agregó el estacionamiento.",
+                    icon: "success",
+                    buttons: "Aceptar"
+                })
                 this.props.history.push("/");
             })
             .catch(console.log)

@@ -3,6 +3,7 @@ import React from 'react';
 import Api from "../servicios/Api";
 import '../css/login.css';
 import ApiEstacionar from '../servicios/ApiEstacionar';
+import swal from "sweetalert";
 
 
 class VerEstacionamiento extends React.Component {
@@ -65,9 +66,27 @@ class VerEstacionamiento extends React.Component {
                 .then(data => {
                     //console.log(data.data);
                     this.cargarDatos();
-                    data.data === "estacionado" ? (alert("Te has estacionado") )
-                        : data.data === "ya_estacionado" ? (alert("Ya estabas estacionado con anterioridad, desestacione y vuelva a intentar"))
-                            : (alert("El estacionamiento se encuentra cerrado"));
+                    data.data === "estacionado" ? (
+                        swal({                            
+                            text: "Te estacionaste correctamente",
+                            icon: "success",
+                            buttons: "Aceptar"
+                        }) 
+                        )
+                        : data.data === "ya_estacionado" ? (
+                            swal({   
+                                title:"Ya estas estacionado",                         
+                                text: "Desestacione y vuelva a intentar",
+                                icon: "warning",
+                                buttons: "Aceptar"
+                            })
+                            )
+                            : (swal({   
+                                title:"Cerrado",                         
+                                text: "El estacionamiento se encuentra cerrado",
+                                icon: "warning",
+                                buttons: "Aceptar"
+                            }));
                     //console.log(data.data);
                     this.props.history.push("/")
                     //.catch(console.log)

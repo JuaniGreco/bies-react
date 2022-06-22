@@ -5,6 +5,7 @@ import Api from "../servicios/Api";
 import ApiEstacionar from '../servicios/ApiEstacionar';
 import ApiConsultarUsuario from '../servicios/ApiConsultarUsuario';
 import '../css/listarestacionamiento.css';
+import swal from "sweetalert";
 
 class ListarEstacionamientos extends React.Component {
     constructor(props) {
@@ -57,7 +58,21 @@ class ListarEstacionamientos extends React.Component {
                 //console.log(data.data);
                 this.cargarDatosUsuarios();
                 this.cargarDatos()
-                data.data === "desestacionado" ? (alert("Usted ha dejado el estacionamiento.")) : (alert("No se pudo desestacionar porque no estaba estacionado"));
+                data.data === "desestacionado" ? (
+                swal({   
+                    title:"Desestacionado",                         
+                    text: "Dejaste el estacionamiento.",
+                    icon: "success",
+                    buttons: "Aceptar"
+                })
+                ) : (
+                    swal({   
+                        title:"Estacione con anterioridad",                         
+                        text: "Seleccione un estacionamiento y estacione.",
+                        icon: "warning",
+                        buttons: "Aceptar"
+                    })
+                    );
             }))
             .then(response => response.json())
             .catch(console.log)
@@ -97,7 +112,7 @@ class ListarEstacionamientos extends React.Component {
                                             <tr key={estacionamiento.idPlayaDeEstacionamiento}>
                                                 <td>{estacionamiento.nombrePlayaDeEstacionamiento}</td>
                                                 <td>{estacionamiento.ubicacion}</td>
-                                                <td>{estacionamiento.lugaresLibres} lugares libres</td>
+                                                <td>Lugares libres: {estacionamiento.lugaresLibres}</td>
                                                 <td>{estacionamiento.observaciones}</td>
                                                 <td>
                                                     <div className="btn-group" role="group" aria-label="">

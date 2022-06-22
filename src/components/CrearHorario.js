@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import apiHorarios from "../servicios/ApiHorarios";
 import SeleccionarDiaSemana from './SeleccionarDiaSemana';
 import SeleccionarEstacionamiento from './SeleccionarEstacionamiento';
+import swal from "sweetalert";
 
 
 class Crear extends React.Component {
@@ -60,9 +61,22 @@ class Crear extends React.Component {
                 //console.log(data.data);              
             
                 if(data.data === "ok"){
-                    alert("Horario agregado")
+                    swal({   
+                        title:"Horario agregado",                         
+                        text: "Se agregó el horario.",
+                        icon: "success",
+                        buttons: "Aceptar"
+                    });
                     this.props.history.push("/");
-                } else alert(data.data)
+                } else{ 
+                    swal({   
+                        title:"Error",                         
+                        text: data.data,
+                        icon: "error",
+                        buttons: "Aceptar"
+                    });
+                    
+                }
             })
             .catch(console.log)
     }
