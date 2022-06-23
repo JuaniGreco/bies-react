@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import apiHorarios from "../servicios/ApiHorarios";
 import SeleccionarDiaSemana from './SeleccionarDiaSemana';
+import swal from "sweetalert";
+
 class Editar extends React.Component {
     constructor(props) {        
         super(props); 
@@ -43,9 +45,21 @@ class Editar extends React.Component {
                 //console.log(data.data);
                 
                 if(data.data === "ok"){
-                    alert("Horario actualizado")
+                    swal({   
+                        title:"Horario actualizado",                         
+                        text: "Se actualizó el horario.",
+                        icon: "success",
+                        buttons: "Aceptar"
+                    });
                     this.props.history.push("/");
-                } else alert(data.data)
+                } else {
+                    swal({   
+                        title:"Error",                         
+                        text: data.data,
+                        icon: "error",
+                        buttons: "Aceptar"
+                    });
+                }
             })
             .catch(console.log)
     }
