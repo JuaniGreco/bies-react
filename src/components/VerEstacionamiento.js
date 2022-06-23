@@ -75,7 +75,7 @@ class VerEstacionamiento extends React.Component {
                         )
                         : data.data === "ya_estacionado" ? (
                             swal({   
-                                title:"Ya estas estacionado",                         
+                                title:"Ya estás estacionado",                         
                                 text: "Desestacione y vuelva a intentar.",
                                 icon: "warning",
                                 buttons: "Aceptar"
