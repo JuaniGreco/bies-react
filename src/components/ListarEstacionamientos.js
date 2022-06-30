@@ -128,7 +128,7 @@ class ListarEstacionamientos extends React.Component {
                             </tbody>
                         </table>
                     </div>
-                    <div className="card-footer">
+                    <div className="card-footer" style={{ textAlign: "center"}}>
                         <button type="button" className="btn btn-danger" style={{lineheight: '50px', width: '150px'}}
                             onClick={() => this.desestacionar(this.props.usuario.idUsuario)}>❌Desestacionar </button>
 
